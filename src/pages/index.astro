@@ -1,11 +1,157 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import "../css/index.css";
 ---
 
 <Layout>
-	<Welcome />
+  <section class="hero">
+    <nav>
+      <a href="/" class="logotype">La guanerita</a>
+
+      <div class="sections">
+        <a href="/">Acerca</a>
+        <a href="/">Productos</a>
+        <a href="/">Contacto</a>
+      </div>
+    </nav>
+    <div class="content">
+      <img src="./lupulo.png" alt="" class="lupulo lupulo_2" />
+      <img src="./lupulo.png" alt="" class="lupulo lupulo_3" />
+      <h1>Siente la Fuerza de Nuestra Tierra en cada Sorbo</h1>
+      <div class="bottle">
+        <img src="./bottle.png" alt="La guanerita" />
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <img src="./chicamocha (2).png" alt="" class="chicamocha" />
+    <div class="content">
+      <div class="info">
+        <h2>La Pasión de Pienta A.Y.C.A.R</h2>
+        <p>
+          Detrás de cada gota de carácter dorado está la mano y la visión de
+          nuestro Maestro Cervecero, Felipe Álvarez. En el corazón de Santander,
+          seleccionamos los granos más puros y el lúpulo con más alma para crear
+          una receta que no sigue modas, sino tradiciones. Somos una cervecería
+          de autor donde la paciencia es nuestro ingrediente secreto
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="products">
+    <div class="bg">
+      <img src="./lupulo_hoja.png" alt="Lupulo" class="up" />
+      <img src="./lupulo_hoja.png" alt="Lupulo" class="down" />
+      <img src="./guanerita.png" alt="" class="guane" />
+    </div>
+    <div class="content">
+      <h2>Nuestros productos</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="head">
+            <img src="./bottle.png" alt="" />
+          </div>
+          <div class="info">
+            <h3>Cerveza de Cafe</h3>
+            <p>Cerveza artesanal realizada a base de cafe</p>
+          </div>
+          <footer>
+            <h4>$15.000</h4>
+          </footer>
+        </div>
+
+        <div class="card">
+          <div class="head">
+            <img src="./bottle.png" alt="" />
+          </div>
+          <div class="info">
+            <h3>Cerveza de Cafe</h3>
+            <p>Cerveza artesanal realizada a base de cafe</p>
+          </div>
+          <footer>
+            <h4>$15.000</h4>
+          </footer>
+        </div>
+
+        <div class="card">
+          <div class="head">
+            <img src="./bottle.png" alt="" />
+          </div>
+          <div class="info">
+            <h3>Cerveza de Cafe</h3>
+            <p>Cerveza artesanal realizada a base de cafe</p>
+          </div>
+          <footer>
+            <h4>$15.000</h4>
+          </footer>
+        </div>
+      </div>
+      <img src="./barrirl.png" alt="" class="barril" />
+    </div>
+  </section>
+
+  <script>
+    // Importamos GSAP y ScrollTrigger desde el paquete instalado
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    // Registramos el plugin ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+
+    // --- ANIMACIÓN 1: La Botella Baja ---
+    // Esperamos a que el DOM esté listo
+    document.addEventListener("DOMContentLoaded", () => {
+      const bottle = document.querySelector(".bottle");
+      const aboutSection = document.querySelector(".about");
+	  const card = document.querySelectorAll(".card")
+
+      // Creamos la animación de la botella
+      gsap.to(bottle, {
+        // Destino: movemos la botella hacia abajo (Y) y la rotamos sutilmente
+        y: "100vh", // Se mueve una altura de viewport hacia abajo
+        rotation: -15, // Pequeña rotación para dinamismo
+
+        // Configuración de ScrollTrigger
+        scrollTrigger: {
+          trigger: aboutSection, // Empieza cuando la sección about entra en vista
+          start: "top bottom", // Empieza cuando el top de 'about' toca el bottom del viewport
+          end: "top top", // Termina cuando el top de 'about' toca el top del viewport
+          scrub: true, // Vincula la animación al scroll (suave)
+          // markers: true, // Descomenta esto para ver los marcadores de depuración
+        },
+      });
+
+      // --- ANIMACIÓN 2: Parallax de Productos + Desvanecimiento de Botella ---
+      const productsSection = document.querySelector(".products");
+
+      gsap.to(productsSection, {
+        y: "-300px",
+        scrollTrigger: {
+          trigger: productsSection,
+          start: "top bottom",
+          end: "top center", // Termina de subir antes para que el efecto sea claro
+          scrub: 1.5,
+          onUpdate: (self) => {
+            // self.progress es un valor de 0 a 1 según el scroll
+            // Hacemos que la opacidad sea la inversa del progreso
+            gsap.set(bottle, { opacity: 1 - self.progress });
+          },
+        },
+      });
+
+      // O una forma más limpia usando una Timeline:
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: productsSection,
+          start: "top bottom",
+          end: "top center",
+          scrub: 1.5,
+        },
+      });
+
+      tl.to(productsSection, { y: "-300px" }, 2) 
+		.to(card, { opacity: 1, y: 0 }, 1.5);
+    });
+  </script>
 </Layout>

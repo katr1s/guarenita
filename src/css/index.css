@@ -1,0 +1,383 @@
+:root {
+  --fondo-gris: #313131e3;
+  --dorado-guanerita: #c49b55;
+  --negro-quemado: #1a1a19;
+  --crema-suave: #d9c5a0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--fondo-gris);
+  color: var(--negro-quemado);
+  font-family: var(--fuente-cuerpo);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+nav {
+  width: 95%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 4;
+}
+
+nav a{
+    color: var(--crema-suave);
+    font-size: 1.5rem;
+    margin-left: 10px;
+    font-family: "Montserrat", sans-serif;
+}
+
+nav .logotype {
+  color: var(--dorado-guanerita);
+  font-size: 2rem;
+  font-family: "Playfair Display", serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  line-height: 1.1;
+  text-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.3),
+    0 0 1px var(--negro-quemado);
+    margin: 0;
+}
+
+
+
+.hero {
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+  background-color: var(--fondo-gris);
+}
+
+.hero::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background: linear-gradient(180deg, black, transparent);
+  z-index: 2;
+}
+
+.content {
+  width: 95%;
+  height: calc(100% - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.content h1 {
+  max-width: 90%;
+  font-size: 5.5rem;
+  text-align: center;
+  color: var(--dorado-guanerita);
+
+  font-family: "Playfair Display", serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  line-height: 1.1;
+
+  text-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.3),
+    0 0 1px var(--negro-quemado);
+
+  margin: 0 auto;
+  z-index: 3;
+}
+
+.bottle {
+  position: absolute;
+  rotate: 16deg;
+  width: 300px;
+  filter: drop-shadow(10px 20px 30px rgba(0, 0, 0, 0.5));
+  left: 40%;
+  z-index: 3;
+  margin: auto;
+  opacity: 1.5;
+
+  img {
+    width: 100%;
+  }
+}
+
+.hero .lupulo {
+  width: 500px;
+  position: absolute;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+.hero .lupulo_2 {
+  width: 600px;
+  margin: 0;
+  top: -20%;
+  left: 0;
+  transform: translateX(-50%) rotate(180deg);
+  z-index: 1;
+}
+
+.hero .lupulo_3 {
+  width: 600px;
+  margin: 0;
+  right: 0;
+  transform: translateX(50%) rotate(0);
+  z-index: 1;
+}
+
+.about {
+  width: 100%;
+  height: 800px;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: -1;
+  background-color: var(--fondo-gris);
+}
+
+.chicamocha {
+  position: absolute;
+  width: 100dvw;
+  scale: 1;
+  opacity: 0.2;
+}
+
+.about .content{
+    justify-content: space-between;
+    z-index: 3;
+}
+.about .info{
+    width: 40%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 4;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.about .info::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: var(--negro-quemado);
+    opacity: 0.5;
+    padding: 20px;
+    filter: blur(40px);
+}
+
+
+.about h2, .products h2{
+  font-size: 2.5rem;
+  text-align: left;
+  color: var(--dorado-guanerita);
+  z-index: 4;
+  font-family: "Playfair Display", serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  line-height: 1.1;
+
+  text-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.3),
+    0 0 1px var(--negro-quemado);
+
+  margin: 0 auto;
+  margin-bottom: 20px;
+  z-index: 2;
+}
+
+.about p, .products h4, .products p{
+  font-size: 1.3rem;
+  text-align: left;
+  color: var(--crema-suave);
+  margin-top: 20px;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.1;
+  z-index: 4;
+
+  text-shadow:
+    2px 2px 4px var(--negro-quemado);
+
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.products{
+    width: 100dvw;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--fondo-gris);
+    z-index: 10;
+    overflow: hidden;
+    margin-top: 0;
+}
+
+.products .bg{
+    width: 40%;
+    height: 100%;
+    background: var(--dorado-guanerita);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 21;
+}
+
+.products .bg .up{
+  width: 80%;
+  position: absolute;
+  rotate: 160deg;
+  top: -10%;
+  left: -20%;
+  opacity: 0.8;
+}
+
+.products .bg .down{
+  width: 80%;
+  position: absolute;
+  rotate: -45deg;
+  bottom: -10%;
+  right: -20%;
+  opacity: 0.8;
+}
+
+.products .bg .guane{
+  z-index: 4;
+}
+
+.products .content .barril{
+  width: 500px;
+  opacity: 0.4;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  transform: translateX(40%);
+  z-index: 10;
+}
+
+.products .content{
+  width: calc(100% - 40%);
+  height: 100%;
+  flex-direction: column;
+  z-index: 20;
+  background-color: var(--fondo-gris);
+}
+
+.products .content h2{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  font-size: 2.5rem;
+}
+
+
+.products .content .cards{
+  width: 100%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  gap: 20px;
+
+  img{
+    width: 150px;
+  transform: translateY(-40%) translateX(-3px);
+
+  }
+}
+
+.products .content .card{
+  width: 25%;
+  height: 350px;
+  display: flex;
+  transform: translateY(20px);
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #1a1a1962;
+
+  border: 1px solid var(--crema-suave);
+}
+
+.products .card .head{
+  background-color: var(--dorado-guanerita);
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  position: relative;
+}
+
+.products .card .head::after{
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  scale: 1.1;
+  position: absolute;
+  border: 1px solid var(--dorado-guanerita);
+  z-index: -1;
+  border-radius: 100%;
+}
+
+.products h3{
+  font-size: 1.8rem;
+  text-align: left;
+  color: var(--dorado-guanerita);
+  z-index: 4;
+  font-family: "Playfair Display", serif;
+  letter-spacing: 3px;
+  line-height: 1.1;
+  text-align: center;
+
+  text-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.3),
+    0 0 1px var(--negro-quemado);
+
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.products p{
+  text-align: center;
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.products h2{
+  text-align: center;
+  transform: translateY(20px);
+}
