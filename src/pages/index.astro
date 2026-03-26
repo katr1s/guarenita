@@ -41,58 +41,81 @@ import "../css/index.css";
   </section>
   <section class="products">
     <div class="bg">
+      <h2>Nuestros productos</h2>
+
       <img src="./lupulo_hoja.png" alt="Lupulo" class="up" />
       <img src="./lupulo_hoja.png" alt="Lupulo" class="down" />
-      <img src="./guanerita.png" alt="" class="guane" />
-    </div>
-    <div class="content">
-      <h2>Nuestros productos</h2>
-      <div class="cards">
-        <div class="card">
-          <div class="head">
-            <img src="./bottle.png" alt="" />
-          </div>
-          <div class="info">
-            <h3>Cerveza de Cafe</h3>
-            <p>Cerveza artesanal realizada a base de cafe</p>
-          </div>
-          <footer>
-            <h4>$15.000</h4>
-          </footer>
-        </div>
+      <img src="./guanerita (2).png" alt="" class="guane" />
 
-        <div class="card">
-          <div class="head">
-            <img src="./bottle.png" alt="" />
-          </div>
-          <div class="info">
-            <h3>Cerveza de Cafe</h3>
-            <p>Cerveza artesanal realizada a base de cafe</p>
-          </div>
-          <footer>
-            <h4>$15.000</h4>
-          </footer>
-        </div>
-
-        <div class="card">
-          <div class="head">
-            <img src="./bottle.png" alt="" />
-          </div>
-          <div class="info">
-            <h3>Cerveza de Cafe</h3>
-            <p>Cerveza artesanal realizada a base de cafe</p>
-          </div>
-          <footer>
-            <h4>$15.000</h4>
-          </footer>
-        </div>
+      <div class="beers" style={{ "--quantity": 8 }}>
+        <img
+          src="./etiquetas/cafe.png"
+          alt=""
+          class="item"
+          style={{ "--position": 1 }}
+        />
+        <img
+          src="./etiquetas/dorada.png"
+          alt=""
+          class="item"
+          style={{ "--position": 2 }}
+        />
+        <img
+          src="./etiquetas/menta_jengibre.png"
+          alt=""
+          class="item"
+          style={{ "--position": 3 }}
+        />
+        <img
+          src="./etiquetas/miel.png"
+          alt=""
+          class="item"
+          style={{ "--position": 4 }}
+        />
+        <img
+          src="./etiquetas/roja.png"
+          alt=""
+          class="item"
+          style={{ "--position": 5 }}
+        />
+        <img
+          src="./etiquetas/tequila.png"
+          alt=""
+          class="item"
+          style={{ "--position": 6 }}
+        />
+        <img
+          src="./etiquetas/negra.png"
+          alt=""
+          class="item"
+          style={{ "--position": 7 }}
+        />
+        <img
+          src="./etiquetas/wtyrriv.png"
+          alt=""
+          class="item"
+          style={{ "--position": 8 }}
+        />
       </div>
-      <img src="./barrirl.png" alt="" class="barril" />
     </div>
   </section>
 
+  <section class="soul">
+    <div class="content">
+      <h2>EL ESPÍRITU INDOMABLE DE SANTANDER</h2>
+      <p>
+        No somos solo una cerveza artesanal; somos la fuerza del Cañón del
+        Chicamocha, la berraquera de nuestra gente y la tradición de una tierra
+        que no se rinde. Guanerita Negra es la herencia líquida de Santander.
+      </p>
+    </div>
+
+    <video src="./Woman.mp4" autoplay loop muted 
+    playsinline
+    poster="./poster.webp"></video>
+  </section>
+
   <script>
-    // Importamos GSAP y ScrollTrigger desde el paquete instalado
     import { gsap } from "gsap";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -100,15 +123,19 @@ import "../css/index.css";
     gsap.registerPlugin(ScrollTrigger);
 
     // --- ANIMACIÓN 1: La Botella Baja ---
-    // Esperamos a que el DOM esté listo
     document.addEventListener("DOMContentLoaded", () => {
       const bottle = document.querySelector(".bottle");
       const aboutSection = document.querySelector(".about");
-	  const card = document.querySelectorAll(".card")
+      const card = document.querySelectorAll(".card");
+      const beer = document.querySelectorAll(".item");
+      const guane = document.querySelector(".guane");
+      const soulText = document.querySelectorAll(
+        ".soul .content h2, .soul .content p",
+      );
+      const soulVideo = document.querySelector(".soul video");
 
       // Creamos la animación de la botella
       gsap.to(bottle, {
-        // Destino: movemos la botella hacia abajo (Y) y la rotamos sutilmente
         y: "100vh", // Se mueve una altura de viewport hacia abajo
         rotation: -15, // Pequeña rotación para dinamismo
 
@@ -118,12 +145,12 @@ import "../css/index.css";
           start: "top bottom", // Empieza cuando el top de 'about' toca el bottom del viewport
           end: "top top", // Termina cuando el top de 'about' toca el top del viewport
           scrub: true, // Vincula la animación al scroll (suave)
-          // markers: true, // Descomenta esto para ver los marcadores de depuración
         },
       });
 
       // --- ANIMACIÓN 2: Parallax de Productos + Desvanecimiento de Botella ---
       const productsSection = document.querySelector(".products");
+      const soul = document.querySelector(".soul");
 
       gsap.to(productsSection, {
         y: "-300px",
@@ -140,7 +167,6 @@ import "../css/index.css";
         },
       });
 
-      // O una forma más limpia usando una Timeline:
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: productsSection,
@@ -150,8 +176,33 @@ import "../css/index.css";
         },
       });
 
-      tl.to(productsSection, { y: "-300px" }, 2) 
-		.to(card, { opacity: 1, y: 0 }, 1.5);
+      tl.to(productsSection, { y: "-300px" }, 2)
+        .to(card, { opacity: 1, y: 0 }, 1.5)
+        .to(guane, { opacity: 1, bottom: "-30%", immediateRender: false }, 2)
+        .to(beer, { opacity: 1, y: 0 }, 2);
+
+      const soulTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: soul, // Se activa con la sección 'soul'
+          start: "top bottom =800", // Empieza cuando la sección entra por abajo
+          end: "top top", // Termina cuando la sección llena la pantalla
+          scrub: 1.5,
+        },
+      });
+
+      soulTl.to(soul, { y: "-300px" }, 0.1);
+
+      soulTl.from(
+        soulText,
+        {
+          y: 100, // Viene desde abajo
+          opacity: 0,
+          stagger: 0.3, // Retraso entre H2 y P
+          duration: 1.2,
+          ease: "power2.out",
+        },
+        0.3,
+      );
     });
   </script>
 </Layout>

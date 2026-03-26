@@ -3,6 +3,8 @@
   --dorado-guanerita: #c49b55;
   --negro-quemado: #1a1a19;
   --crema-suave: #d9c5a0;
+  --sombra-medieval: 0 10px 30px rgba(0, 0, 0, 0.7);
+  --borde-pergamino: 1px solid rgba(217, 197, 160, 0.3);
 }
 
 body {
@@ -27,11 +29,11 @@ nav {
   z-index: 4;
 }
 
-nav a{
-    color: var(--crema-suave);
-    font-size: 1.5rem;
-    margin-left: 10px;
-    font-family: "Montserrat", sans-serif;
+nav a {
+  color: var(--crema-suave);
+  font-size: 1.5rem;
+  margin-left: 10px;
+  font-family: "Montserrat", sans-serif;
 }
 
 nav .logotype {
@@ -44,10 +46,8 @@ nav .logotype {
   text-shadow:
     2px 2px 4px rgba(0, 0, 0, 0.3),
     0 0 1px var(--negro-quemado);
-    margin: 0;
+  margin: 0;
 }
-
-
 
 .hero {
   width: 100dvw;
@@ -158,39 +158,39 @@ nav .logotype {
   opacity: 0.2;
 }
 
-.about .content{
-    justify-content: space-between;
-    z-index: 3;
+.about .content {
+  justify-content: space-between;
+  z-index: 3;
 }
-.about .info{
-    width: 40%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
-    z-index: 4;
-    padding: 20px;
-    overflow: hidden;
-}
-
-.about .info::after{
-    content: "";
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    background-color: var(--negro-quemado);
-    opacity: 0.5;
-    padding: 20px;
-    filter: blur(40px);
+.about .info {
+  width: 40%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  z-index: 4;
+  padding: 20px;
+  overflow: hidden;
 }
 
+.about .info::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: var(--negro-quemado);
+  opacity: 0.5;
+  padding: 20px;
+  filter: blur(40px);
+}
 
-.about h2, .products h2{
+.about h2,
+.products h2 {
   font-size: 2.5rem;
   text-align: left;
   color: var(--dorado-guanerita);
@@ -209,7 +209,9 @@ nav .logotype {
   z-index: 2;
 }
 
-.about p, .products h4, .products p{
+.about p,
+.products h4,
+.products p {
   font-size: 1.3rem;
   text-align: left;
   color: var(--crema-suave);
@@ -218,166 +220,208 @@ nav .logotype {
   line-height: 1.1;
   z-index: 4;
 
-  text-shadow:
-    2px 2px 4px var(--negro-quemado);
+  text-shadow: 2px 2px 4px var(--negro-quemado);
 
   margin: 0 auto;
   z-index: 2;
 }
 
-.products{
-    width: 100dvw;
-    height: 100dvh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--fondo-gris);
-    z-index: 10;
-    overflow: hidden;
-    margin-top: 0;
-}
-
-.products .bg{
-    width: 40%;
-    height: 100%;
-    background: var(--dorado-guanerita);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    z-index: 21;
-}
-
-.products .bg .up{
-  width: 80%;
-  position: absolute;
-  rotate: 160deg;
-  top: -10%;
-  left: -20%;
-  opacity: 0.8;
-}
-
-.products .bg .down{
-  width: 80%;
-  position: absolute;
-  rotate: -45deg;
-  bottom: -10%;
-  right: -20%;
-  opacity: 0.8;
-}
-
-.products .bg .guane{
-  z-index: 4;
-}
-
-.products .content .barril{
-  width: 500px;
-  opacity: 0.4;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  transform: translateX(40%);
-  z-index: 10;
-}
-
-.products .content{
-  width: calc(100% - 40%);
-  height: 100%;
-  flex-direction: column;
-  z-index: 20;
+.products {
+  width: 100dvw;
+  height: 110dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--fondo-gris);
-}
-
-.products .content h2{
-  width: 100%;
-  height: 30%;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  font-size: 2.5rem;
-}
-
-
-.products .content .cards{
-  width: 100%;
-  height: 70%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 20;
-  gap: 20px;
-
-  img{
-    width: 150px;
-  transform: translateY(-40%) translateX(-3px);
-
-  }
-}
-
-.products .content .card{
-  width: 25%;
-  height: 350px;
-  display: flex;
-  transform: translateY(20px);
-  opacity: 0;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: #1a1a1962;
-
-  border: 1px solid var(--crema-suave);
-}
-
-.products .card .head{
-  background-color: var(--dorado-guanerita);
-  width: 100px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 100%;
+  z-index: 10;
+  overflow: hidden;
+  margin-top: 0;
   position: relative;
 }
 
-.products .card .head::after{
-  content: "";
+.products .bg {
   width: 100%;
   height: 100%;
-  background-color: transparent;
-  scale: 1.1;
+  background: var(--dorado-guanerita);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  border: 1px solid var(--dorado-guanerita);
-  z-index: -1;
-  border-radius: 100%;
+  overflow: hidden;
+  flex-direction: column;
+  z-index: 21;
 }
 
-.products h3{
-  font-size: 1.8rem;
-  text-align: left;
-  color: var(--dorado-guanerita);
-  z-index: 4;
-  font-family: "Playfair Display", serif;
-  letter-spacing: 3px;
-  line-height: 1.1;
-  text-align: center;
+.products .bg .up {
+  width: 30%;
+  position: absolute;
+  rotate: 145deg;
+  left: -10%;
+  opacity: 0.8;
+}
 
+.products .bg .down {
+  width: 30%;
+  position: absolute;
+  rotate: -145deg;
+  right: -10%;
+  opacity: 0.8;
+}
+
+.products .bg .guane {
+  bottom: -50%;
+  position: absolute;
+  width: 500px;
+  z-index: 4;
+  opacity: 0;
+}
+
+.products h2 {
+  top: 7%;
+  color: var(--negro-quemado);
+  position: absolute;
+}
+
+.products .beers {
+  position: absolute;
+  margin: auto;
+  width: 150px;
+  height: 200px;
+  display: flex;
+  top: 30%;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  animation: autoRun 40s linear infinite;
+  z-index: 4;
+}
+
+.products .beers .item {
+  width: 125px;
+  height: 175px;
+  position: absolute;
+  inset: 0 0 0 0;
+  opacity: 0;
+  z-index: 25;
+  transform: translateY(20px);
+  transform: rotateY(
+      calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)
+    )
+    translateZ(400px);
+}
+
+@keyframes autoRun {
+  from {
+    transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+  }
+  to {
+    transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+  }
+}
+
+
+.body-lock {
+  overflow: hidden; 
+}
+
+.soul {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  transform: translateY(-300px);
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--negro-quemado);
+  z-index: 30; 
+}
+
+.soul::after,
+.soul::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--dorado-guanerita),
+    transparent
+  );
+  opacity: 0.5;
+}
+.soul::before {
+  top: 0;
+}
+.soul::after {
+  bottom: 0;
+}
+
+.soul .content {
+  width: 45%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  padding: 0 5%;
+  position: relative;
+  z-index: 10;
+  background-color: var(--negro-quemado);
+}
+
+.soul .content::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: repeat;
+  opacity: 0.03;
+  z-index: -1;
+}
+
+.soul h2 {
+  font-size: 3.5rem; 
+  text-align: center;
+  color: var(--dorado-guanerita);
+  font-family: "Playfair Display", serif;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  line-height: 1.1;
   text-shadow:
     2px 2px 4px rgba(0, 0, 0, 0.3),
     0 0 1px var(--negro-quemado);
-
-  margin: 0 auto;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  opacity: 1; /* GSAP manejará la aparición */
 }
 
-.products p{
+.soul p {
+  font-size: 1.4rem;
   text-align: center;
-  font-size: 1rem;
-  margin: 10px 0;
+  color: var(--crema-suave);
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.3;
+  max-width: 90%;
+  opacity: 1;
+  text-shadow: 2px 2px 4px var(--negro-quemado);
 }
 
-.products h2{
-  text-align: center;
-  transform: translateY(20px);
+.soul video {
+  width: 55%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 5;
+
+  -webkit-mask-image: linear-gradient(
+    to left,
+    black 70%, transparent 100%
+  );
+  mask-image: linear-gradient(to left, black 70%, transparent 100%);
+
+  border-left: var(--borde-pergamino);
+  box-shadow: var(--sombra-medieval);
 }
