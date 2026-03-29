@@ -467,6 +467,7 @@ nav .logotype {
 
 @media screen and (max-width: 768px) {
     .hero{
+      width: 100dvw;
       height: 500px;
     }
 
@@ -475,6 +476,7 @@ nav .logotype {
     }
 
     .about{
+      width: 100dvw;
       height: 600px;
     }
 
@@ -497,6 +499,7 @@ nav .logotype {
     }
 
     .products{
+      width: 100dvw;
       height: 100dvh;
 
 
@@ -507,8 +510,8 @@ nav .logotype {
     }
 
     .soul{
-      width: 100%;
-      height: 100%;
+      width: 100dvw;
+      height: 10dvh;
       flex-direction: column;
       justify-content: center;
       align-items: center;
