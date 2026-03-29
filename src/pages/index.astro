@@ -18,6 +18,7 @@ import "../css/index.css";
       <img src="./lupulo.png" alt="" class="lupulo lupulo_2" />
       <img src="./lupulo.png" alt="" class="lupulo lupulo_3" />
       <h1>Siente la Fuerza de Nuestra Tierra en cada Sorbo</h1>
+      <a href="/" class="button">Probar ahora</a>
       <div class="bottle">
         <img src="./bottle.png" alt="La guanerita" />
       </div>
@@ -37,6 +38,9 @@ import "../css/index.css";
           de autor donde la paciencia es nuestro ingrediente secreto
         </p>
       </div>
+
+      <a href="/" class="button">Saber mas</a>
+
     </div>
   </section>
   <section class="products">
@@ -162,7 +166,7 @@ import "../css/index.css";
           onUpdate: (self) => {
             // self.progress es un valor de 0 a 1 según el scroll
             // Hacemos que la opacidad sea la inversa del progreso
-            gsap.set(bottle, { opacity: 1 - self.progress });
+            gsap.set(bottle, { opacity: 0 - self.progress });
           },
         },
       });

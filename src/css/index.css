@@ -8,12 +8,14 @@
 }
 
 body {
+  max-width: 1920px;
   margin: 0;
   padding: 0;
   background: var(--fondo-gris);
   color: var(--negro-quemado);
   font-family: var(--fuente-cuerpo);
   overflow-x: hidden;
+  margin: auto;
 }
 
 a {
@@ -50,7 +52,7 @@ nav .logotype {
 }
 
 .hero {
-  width: 100dvw;
+  width: 100%;
   height: 100dvh;
   display: flex;
   justify-content: center;
@@ -79,6 +81,8 @@ nav .logotype {
   justify-content: center;
   align-items: center;
   position: relative;
+  flex-direction: column;
+  margin: auto;
 }
 
 .content h1 {
@@ -96,8 +100,32 @@ nav .logotype {
     2px 2px 4px rgba(0, 0, 0, 0.3),
     0 0 1px var(--negro-quemado);
 
-  margin: 0 auto;
   z-index: 3;
+  margin: 0 auto;
+}
+
+.hero .button, .about a{
+  display: inline-block;
+  padding: 15px 35px;
+  background-color: transparent; /* Fondo transparente para mostrar el borde */
+  color: var(--crema-suave);
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 1px solid var(--dorado-guanerita); /* El borde dorado es la clave */
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  z-index: 10;
+  margin-top: 20px;
+}
+
+.hero .button:hover, .about a:hover{
+  background-color: var(--dorado-guanerita);
+  color: var(--negro-quemado);
+  box-shadow: 0 0 20px rgba(196, 155, 85, 0.4); /* Brillo dorado */
 }
 
 .bottle {
@@ -106,9 +134,11 @@ nav .logotype {
   width: 300px;
   filter: drop-shadow(10px 20px 30px rgba(0, 0, 0, 0.5));
   left: 40%;
-  z-index: 3;
+  z-index: 0;
   margin: auto;
-  opacity: 1.5;
+  opacity: 0;
+  user-select: none;
+  display: none;
 
   img {
     width: 100%;
@@ -119,23 +149,22 @@ nav .logotype {
   width: 500px;
   position: absolute;
   z-index: -1;
-  opacity: 0.3;
+  opacity: 0.2;
 }
 
 .hero .lupulo_2 {
-  width: 600px;
+  width: 50%;
   margin: 0;
-  top: -20%;
-  left: 0;
-  transform: translateX(-50%) rotate(180deg);
+  transform: translateY(-20%) rotate(280deg);
   z-index: 1;
+  left: -5%;
 }
 
 .hero .lupulo_3 {
-  width: 600px;
+  width: 50%;
   margin: 0;
   right: 0;
-  transform: translateX(50%) rotate(0);
+  transform: translateY(-20%)  rotate(280deg);
   z-index: 1;
 }
 
@@ -159,7 +188,7 @@ nav .logotype {
 }
 
 .about .content {
-  justify-content: space-between;
+  justify-content: flex-start;
   z-index: 3;
 }
 .about .info {
@@ -209,6 +238,10 @@ nav .logotype {
   z-index: 2;
 }
 
+.about h2{
+  text-align: center;
+}
+
 .about p,
 .products h4,
 .products p {
@@ -226,9 +259,13 @@ nav .logotype {
   z-index: 2;
 }
 
+.about p{
+  text-align: center;
+}
+
 .products {
-  width: 100dvw;
-  height: 110dvh;
+  width: 100%;
+  height: 600px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -424,4 +461,71 @@ nav .logotype {
 
   border-left: var(--borde-pergamino);
   box-shadow: var(--sombra-medieval);
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .hero{
+      height: 500px;
+    }
+
+    .hero h1{
+      font-size: 2.5rem;
+    }
+
+    .about{
+      height: 600px;
+    }
+
+    .about .info{
+      width: 80%;
+    }
+
+    .about .chicamocha{
+      width: 100%;
+      height: 100dvh;
+      image-rendering: cover;
+    }
+
+    .about h2{
+      font-size: 1.8rem;
+    }
+
+    .about p{
+      font-size: 1.2rem;
+    }
+
+    .products{
+      height: 100dvh;
+
+
+      h2{
+        width: auto;
+        text-align: center;
+      }
+    }
+
+    .soul{
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      left: 0;
+
+      h2{
+        font-size: 1.8rem;
+        margin: 0 auto;
+      }
+    }
+
+    .soul .content{
+      width: 80%;
+      display: flex;
+    }
+
+    .soul video{
+      width: 100%;
+    }
 }
