@@ -1,0 +1,67 @@
+<nav>
+    <div class="logotype">
+        <a href="/">Guanerita</a>
+    </div>
+
+    <div class="user">
+        <a href="/">Productos</a>
+        <a href="/">Acerca</a>
+        <a href="/">Contactanos</a>
+
+        <button>Iniciar sesion</button>
+    </div>
+</nav>
+
+<style>
+    a{
+        text-decoration: none;
+    }
+
+    nav{
+        width: 95%;
+        height: 70px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    .logotype{
+        width: 50%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .user{
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 20px;
+    }
+
+    .logotype a{
+        color: var(--dorado-guanerita);
+        font-size: 2.2rem;
+    }
+
+    .user a{
+        color: var(--crema-suave);
+        font-size: 1.3rem;
+    }
+
+    .user button{
+        background-color: transparent;
+        border: 1px solid var(--dorado-guanerita);
+        padding: 5px 7px;
+        background-color: var(--dorado-guanerita);
+        color: var(--negro-quemado);
+        cursor: pointer;
+    }
+
+    .user button:hover{
+        box-shadow: 0 0 7px var(--dorado-guanerita);
+        transition: 0.5s;
+    }
+</style>
