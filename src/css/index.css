@@ -467,7 +467,7 @@ nav .logotype {
 
 @media screen and (max-width: 768px) {
     .hero, .about, .products, .soul{
-      width: 100vw;
+      width: 100dvw;
     }
     .hero h1{
       font-size: 2.5rem;
