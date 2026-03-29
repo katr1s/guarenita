@@ -466,6 +466,9 @@ nav .logotype {
 
 
 @media screen and (max-width: 768px) {
+    .hero, .about, .products, .soul{
+      width: 100vw;
+    }
     .hero h1{
       font-size: 2.5rem;
     }
@@ -498,6 +501,7 @@ nav .logotype {
     }
 
     .soul{
+      width: 100vw;
       flex-direction: column;
       justify-content: center;
       align-items: center;
