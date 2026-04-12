@@ -1,41 +1,28 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Navigation from "../components/navigation.astro"
+import Mayor from "../components/Mayor.astro"
 import "../css/index.css";
 ---
 
 <Layout>
-  <section class="hero">
+    <Mayor />
+    <section class="hero">
+    <div class="overlay"></div>
     <Navigation /> 
-    <div class="bg">
-      <img src="./chicamocha (2).png" alt="Cañon del chicamocha" />
-    </div>
     <div class="content">
-      <div class="part_1">
-        <h1>Siente la Fuerza de Nuestra Tierra en cada Sorbo</h1>
-        <a href="/" class="call">Probar ahora</a>
-      </div>
-      <div class="part_2">
-        <img src="./bottle.png" alt="Guanerita" class="guane" />
-        <img src="./lupulo_hoja.png" alt="Guanerita" class="lupulo_3" />
-        <img src="./lupulo_hoja.png" alt="Guanerita" class="lupulo_2" />
-        <img src="./lupulo_hoja.png" alt="Guanerita" class="lupulo" />
-      </div>
+      <h1>Siente la Fuerza de Nuestra Tierra en cada Sorbo</h1>
+      <a href="/" class="tasty">Probar ahora</a>
     </div>
-  </section>
 
-  <section class="about">
-    <div class="content">
-      <div class="part_1">
-        <h2>UN LEGADO DE CORAJE Y MALTA</h2>
-        <p>Nacimos bajo el cielo inmenso de Santander, donde el viento del Chicamocha forja el carácter de los que no se rinden. La Guanerita no es solo una cerveza; es el resultado de la unión entre la maestría técnica y la fuerza de nuestra tierra. Somos artesanos que respetan el tiempo, creyentes de que la verdadera calidad no conoce atajos. Cada botella es un tributo a nuestra historia y un brindis por el espíritu indomable que nos define</p>
-      </div>
+    </section>
 
-      <div class="part_2">
-        <video src="./Woman.mp4" autoplay loop muted></video>
-        <img src="./lupulo.png" alt="" class="down">
+    <script type="module">
+      const ok = document.querySelector(".yes")
+      const mayor = document.querySelector(".mayor")
 
-      </div>
-    </div>
-  </section>
+      ok.addEventListener("click", ()=> {
+        mayor.classList.add("ocultar")
+      })
+    </script>
 </Layout>

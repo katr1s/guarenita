@@ -1,0 +1,110 @@
+<div class="mayor">
+    <video src="./Woman.mp4" muted loop autoplay playsinline poster="./poster.webp"></video>
+    
+    <div class="overlay"></div>
+
+    <div class="Pregunta">
+        <h2>¿ERES MAYOR DE EDAD?</h2>
+        <p>Prohíbase el expendio de bebidas embriagantes a menores de edad</p>
+
+        <div class="Respuesta">
+            <button class="yes">SÍ, SOY MAYOR</button>
+            <button class="no">SALIR</button>
+        </div>
+        
+        <span class="warning">EL EXCESO DE ALCOHOL ES PERJUDICIAL PARA LA SALUD</span>
+    </div>
+</div>
+
+<style>
+    .mayor {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed; /* Para que cubra TODA la pantalla sobre el resto de la web */
+        top: 0;
+        left: 0;
+        z-index: 9999; /* El nivel más alto */
+        background-color: #000;
+        overflow: hidden;
+    }
+
+    video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+    }
+
+
+
+    .Pregunta {
+        position: relative;
+        z-index: 3;
+        text-align: center;
+        width: 90%;
+        max-width: 500px;
+        padding: 40px;
+        border: 1px solid var(--dorado-guanerita);
+        background: rgba(26, 26, 25, 0.8);
+        backdrop-filter: blur(10px);
+    }
+
+    h2 {
+        color: var(--dorado-guanerita);
+        font-family: "Playfair Display", serif;
+        letter-spacing: 3px;
+        margin-bottom: 10px;
+    }
+
+    p {
+        color: var(--crema-suave);
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+    }
+
+    .Respuesta {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    button {
+        padding: 12px 25px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+        border: 1px solid var(--dorado-guanerita);
+        background: transparent;
+        color: var(--dorado-guanerita);
+    }
+
+    button.yes:hover {
+        background: var(--dorado-guanerita);
+        color: #000;
+    }
+
+    button.no {
+        border-color: #666;
+        color: #666;
+    }
+
+    .warning {
+        display: block;
+        margin-top: 30px;
+        font-size: 0.7rem;
+        color: rgba(217, 197, 160, 0.5);
+        letter-spacing: 1px;
+    }
+
+    .ocultar{
+        display: none;
+    }
+</style>
