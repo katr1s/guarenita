@@ -63,8 +63,8 @@ body {
   color: var(--dorado-guanerita);
   font-family: "Playfair Display", serif;
   letter-spacing: 3px;
-  filter: drop-shadow(0 0 5px var(--negro-quemado)) 
-        drop-shadow(0 0 15px rgba(0,0,0,0.6));
+  filter: drop-shadow(0 0 5px var(--negro-quemado))
+    drop-shadow(0 0 15px rgba(0, 0, 0, 0.6));
 }
 
 .hero .tasty {
@@ -79,4 +79,120 @@ body {
   background: var(--dorado-guanerita);
   color: var(--negro-quemado);
   box-shadow: 0 0 10px var(--dorado-guanerita);
+}
+
+.about {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.about .content {
+  width: 95%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.about .part_1 {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about h2 {
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  text-align: center;
+  color: var(--dorado-guanerita);
+  font-family: "Playfair Display", serif;
+  letter-spacing: 3px;
+  filter: drop-shadow(0 0 5px var(--negro-quemado))
+    drop-shadow(0 0 15px rgba(0, 0, 0, 0.6));
+}
+
+.about .part_2 {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .box {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bottle{
+    width: 90%;
+    filter: drop-shadow(0 0 100px var(--dorado-guanerita));
+    user-select: none;
+    rotate: 16deg;
+    z-index: 4;
+  }
+}
+
+.about .poster{
+  user-select: none;
+  transform: translateY(10%);
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+.about p {
+  font-size: clamp(1rem, 1.4rem);
+  color: var(--crema-suave);
+  font-family: "Montserrat", sans-serif;
+  padding-left: 30px;
+}
+
+
+
+@media screen and (max-width: 1200px) {
+  .about{
+    height: auto;
+  }
+
+  .about .part_2{
+    flex-direction: column;
+
+    .box{
+      width: 100%;
+      height: 300px;
+    }
+  }
+
+  .about .part_2 .bottle{
+    width: auto;
+    height: 150%;
+  }
+
+  .about h2{
+    margin: 0;
+  }
+
+  .about p{
+    text-align: center;
+    padding: 0;
+  }
+
+  .about .part_2 .box_3{
+    display: none;
+  }
+
+  .about .poster{
+    display: none;
+  }
 }
