@@ -18,6 +18,10 @@ body {
   margin: auto;
 }
 
+.hidden{
+  overflow: hidden;
+}
+
 .overlay {
   position: absolute;
   top: 0;
@@ -88,7 +92,6 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  overflow-x: hidden;
 }
 
 .about .content {
@@ -105,13 +108,12 @@ body {
   width: 100%;
   height: 20%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
 .about h2 {
   font-size: clamp(2.5rem, 8vw, 5.5rem);
-  text-align: center;
   color: var(--dorado-guanerita);
   font-family: "Playfair Display", serif;
   letter-spacing: 3px;
@@ -123,7 +125,7 @@ body {
   width: 100%;
   height: 70%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 
   .box {
@@ -145,20 +147,185 @@ body {
 }
 
 .about .poster{
+  width: 300px;
+  opacity: 0.35;
   user-select: none;
-  transform: translateY(10%);
-  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  transform: rotate(10deg);
+  mix-blend-mode: screen;
+  filter: blur(0.4px) contrast(1.2);
+  pointer-events: none;
 }
 
 .about p {
-  font-size: clamp(1rem, 1.4rem);
+  font-size: clamp(1rem, 3.8vh ,2.5rem);
   color: var(--crema-suave);
   font-family: "Montserrat", sans-serif;
-  padding-left: 30px;
 }
 
 
+.information{
+  width: 100%;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.information .content{
+  width: 95%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info, .data{
+  width: 35%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.info{
+  align-items: flex-start;
+}
+
+.information h2{
+  font-size: clamp(2.5rem, 8vw, 3.5rem);
+  color: var(--dorado-guanerita);
+  font-family: "Playfair Display", serif;
+  letter-spacing: 3px;
+  filter: drop-shadow(0 0 5px var(--negro-quemado))
+    drop-shadow(0 0 15px rgba(0, 0, 0, 0.6));
+    margin: 0;
+    line-height: 45px;
+
+}
+
+.information p {
+  font-size: clamp(1rem, 3.8vh ,2.5rem);
+  color: var(--crema-suave);
+  font-family: "Montserrat", sans-serif;
+}
+
+.information h3{
+  font-size: 1.5rem;
+  color: var(--crema-suave);
+  font-family: "Playfair Display", serif;
+  letter-spacing: 3px;
+  filter: drop-shadow(0 0 5px var(--negro-quemado))
+    drop-shadow(0 0 15px rgba(0, 0, 0, 0.6));
+    margin: 0;
+    line-height: 45px;
+}
+
+.data{
+  border: 1px solid var(--dorado-guanerita);
+  height: 350px;
+  width: 300px;
+  padding: 0 30px ;
+  align-items: flex-end;
+}
+
+.data .line{
+  width: 100%;
+  border-bottom: 1px solid var(--crema-suave);
+}
+
+
+.counter{
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  img{
+    position: absolute;
+    width: 250px;
+    top: 0;
+    margin-top: 50px;
+    transform: translateY(-20%);
+  }
+
+  overflow: hidden;
+}
+
+.counter .content{
+  margin-top: 50px;
+  width: 400px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: var(--negro-quemado);
+  z-index: 2;
+  border: 2px solid var(--crema-suave);
+}
+
+.counter .card{
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.content h5{
+  font-size: 1.4rem;
+  text-align: center;
+  color: var(--crema-suave);
+  font-family: "Playfair Display", serif;
+  letter-spacing: 3px;
+  filter: drop-shadow(0 0 5px var(--negro-quemado))
+    drop-shadow(0 0 15px rgba(0, 0, 0, 0.6));
+    margin: 0;
+    line-height: 45px;
+}
+
+.content h6{
+  font-size: 1.3rem;
+  text-align: center;
+  color: var(--crema-suave);
+  font-family: "Playfair Display", serif;
+  letter-spacing: 3px;
+  filter: drop-shadow(0 0 5px var(--negro-quemado))
+    drop-shadow(0 0 15px rgba(0, 0, 0, 0.6));
+    margin: 0;
+    line-height: 45px;
+}
+
+.counter .line{
+  width: 2px;
+  height: 75%;
+  background-color: var(--crema-suave);
+}
+
+.counter .lupulo_1{
+  left: 0;
+  width: 350px;
+  rotate: 225deg;
+  transform: translate(150px, -100px);
+  mix-blend-mode: screen;
+  filter: blur(0.4px) contrast(1.2) grayscale(1);
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+.counter .lupulo_2{
+  opacity: 0.2;
+  right: 0;
+  width: 350px;
+  transform: translate(150px, -100px);
+  mix-blend-mode: screen;
+  filter: blur(0.4px) contrast(1.2) grayscale(1);
+  pointer-events: none;
+  rotate: 45deg;
+}
 
 @media screen and (max-width: 1200px) {
   .about{
@@ -186,6 +353,7 @@ body {
   .about p{
     text-align: center;
     padding: 0;
+    font-size: 1.2rem;
   }
 
   .about .part_2 .box_3{
@@ -194,5 +362,37 @@ body {
 
   .about .poster{
     display: none;
+  }
+
+  .information{
+    display: none;
+  }
+
+  .information .content{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .information .info{
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .information h2{
+    font-size: 2.5rem;
+    text-align: center;
+    padding: 0;
+  }
+
+  .counter{
+    margin-top: 80px;
+  }
+
+  .contact{
+    img{
+      bottom: 0;
+    }
   }
 }

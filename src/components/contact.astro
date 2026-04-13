@@ -1,0 +1,109 @@
+<section class="contact">
+    <img src="./chicamocha.png" alt="" class="chica">
+  <div class="contact-container">
+    <div class="contact-header">
+      <h2>Escribe tu propia historia</h2>
+      <p>
+        ¿Tienes dudas sobre nuestras maltas o quieres llevar a Guanerita a tu
+        mesa? Déjanos un mensaje.
+      </p>
+    </div>
+
+    <form class="contact-form">
+      <div class="input-group">
+        <label for="name">Nombre de pila</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Ej. Juan de la Tierra"
+          required
+        />
+      </div>
+
+      <div class="input-group">
+        <label for="email">Correo electrónico</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="tu@correo.com"
+          required
+        />
+      </div>
+
+      <div class="input-group">
+        <label for="message">Tu mensaje</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="4"
+          placeholder="Háblanos de tu interés en nuestra alquimia..."
+        ></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">Enviar Mensaje</button>
+    </form>
+  </div>
+</section>
+
+<style>
+  .contact {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--negro-quemado);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .chica{
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    opacity: 0.3;
+  }
+
+  .contact-container {
+    max-width: 600px;
+    z-index: 3;
+    width: 100%;
+    border: 1px solid rgba(212, 175, 55, 0.3); /* Un dorado tenue */
+    padding: 40px;
+    background: linear-gradient(145deg, #0a0a0a, #121212);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--dorado-guanerita);
+    color: #f0f0f0;
+    padding: 10px 0;
+    margin-bottom: 30px;
+    font-family: "Playfair Display", serif;
+    outline: none;
+    resize: none;
+  }
+
+  /* El botón con el estilo del "Probar ahora" */
+  .btn-submit {
+    background-color: var(--dorado-guanerita);
+    color: var(--negro-quemado);
+    border: none;
+    padding: 15px 40px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .btn-submit:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--dorado-guanerita);
+  }
+</style>
