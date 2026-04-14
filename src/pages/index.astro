@@ -70,8 +70,17 @@ import "../css/index.css";
   </section>
 
   <div class="counter">
-    <img src="./lupulo.png" alt="" class="lupulo_1">
-    <img src="./lupulo.png" alt="" class="lupulo_2">
+    <div class="backgroundCounter">
+      <div class="boxCounter box_after_1">
+        <img src="./miel.webp" alt="Miel">
+      </div>
+      <div class="boxCounter box_after_2">
+        <img src="./cafe.webp" alt="Café">
+      </div>
+      <div class="boxCounter box_after_3">
+        <img src="./trigo.webp" alt="Trigo">
+      </div>
+    </div>
     <div class="content">
       <div class="card">
         <h5>Referencias</h5>
@@ -83,7 +92,20 @@ import "../css/index.css";
         <h6>1</h6>
       </div>
     </div>
-    <img src="./perro.png" alt="" />
+    <img src="./perro.png" alt="" class="perro"/>
+  </div>
+  <div class="reference">
+    <div class="content">
+      <div class="part_1">
+        <img src="./materia_prima_.png" alt="">
+
+        <article>
+          <h2>El Ritual Detrás del Cáliz</h2>
+          <p>No existen fórmulas mágicas, solo el respeto absoluto por el tiempo y la materia prima. Desde la selección manual de los granos hasta el control exacto de cada grado Brix, desvelamos los secretos que convierten el agua y la cebada en la fuerza de nuestra tierra.</p>
+        </article>
+      </div>
+      <div class="part_2"></div>
+    </div>
   </div>
 
   <Contact />
@@ -147,6 +169,7 @@ import "../css/index.css";
       opacity: 0,
       duration: 0.5
     }, "-=1.5");
+
   });
   </script>
 </Layout>
