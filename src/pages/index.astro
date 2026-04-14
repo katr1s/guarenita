@@ -87,7 +87,7 @@ import "../css/index.css";
   </div>
 
   <Contact />
-  <script type="module">
+  <script>
     const ok = document.querySelector(".yes");
     const mayor = document.querySelector(".mayor");
     const body = document.querySelector(".body");
@@ -96,5 +96,57 @@ import "../css/index.css";
       mayor.classList.add("ocultar");
       body.classList.remove("hidden");
     });
+
+
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  window.addEventListener("load", () => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".about", // About como disparador
+        start: "top bottom", // Empieza cuando el About asoma por abajo
+        end: "top top",      // Termina cuando el About llega al tope de la pantalla
+        scrub: 1,        
+      }
+    });
+
+    tl.to(".hero", {
+      opacity: 0,
+      y: -100,
+      duration: 1
+    }, 0);
+
+    tl.fromTo(".about", 
+      { y: 300, opacity: 0 }, 
+      { y: 0, opacity: 1, duration: 1 }, 
+      0
+    );
+
+    // la seccion sube y aparece
+    tl.from(".about .part_1, .about .box:not(:has(.bottle))", {
+      y: 50,
+      opacity: 0,
+      stagger: 0.2,
+      duration: 0.5
+    });
+
+    // la botella baja 
+    tl.to(".bottle", {
+      y: 400, // La botella baja los 400px
+      ease: "power1.inOut",
+      duration: 2 // duración para que dure el resto del scroll de la sección
+    });
+
+    // sello animacion
+    tl.from(".poster", {
+      scale: 0,
+      rotation: -180,
+      opacity: 0,
+      duration: 0.5
+    }, "-=1.5");
+  });
   </script>
 </Layout>
