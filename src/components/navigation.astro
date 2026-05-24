@@ -4,11 +4,11 @@
     </div>
 
     <div class="user">
-        <a href="/">Productos</a>
-        <a href="/">Acerca</a>
-        <a href="/">Contactanos</a>
+        <a href="/Productos">Productos</a>
+        <a href="/About">Acerca</a>
+        <a href="/Contact">Contactanos</a>
 
-        <button>Iniciar sesion</button>
+        <a href="/Account/Login" class="button">Iniciar sesion</a>
     </div>
 </nav>
 
@@ -52,16 +52,17 @@
         font-size: 1.3rem;
     }
 
-    .user button{
+    .user .button{
         background-color: transparent;
         border: 1px solid var(--dorado-guanerita);
         padding: 5px 7px;
         background-color: var(--dorado-guanerita);
         color: var(--negro-quemado);
         cursor: pointer;
+        font-size: 1rem;
     }
 
-    .user button:hover{
+    .user .button:hover{
         box-shadow: 0 0 7px var(--dorado-guanerita);
         transition: 0.5s;
     }

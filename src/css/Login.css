@@ -1,0 +1,203 @@
+:root {
+  --fondo-gris: #313131e3;
+  --dorado-guanerita: #c49b55;
+  --negro-quemado: #1a1a19;
+  --crema-suave: #d9c5a0;
+  --sombra-medieval: 0 10px 30px rgba(0, 0, 0, 0.7);
+  --borde-pergamino: 1px solid rgba(217, 197, 160, 0.3);
+  --dorado-guanerita-rgb: 196, 155, 85;
+}
+
+body {
+  max-width: 1920px;
+  width: 100vw;
+  min-height: 100vh; 
+  margin: 0 auto;    
+  padding: 0;
+  color: var(--crema-suave);
+  overflow-x: hidden;
+
+  background: 
+    radial-gradient(circle at 1px 1px, rgba(var(--dorado-guanerita-rgb), 0.15) 1px, transparent 0),
+    var(--negro-quemado);
+  
+  background-size: 24px 24px; 
+}
+
+h1,h2,h3,h4{
+  font-family: "Playfair Display", serif;
+  letter-spacing: 3px;
+}
+
+p{
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+
+
+.login{
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login .background{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--dorado-guanerita);
+    overflow: hidden;
+}
+
+
+.background {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--dorado-guanerita);
+  z-index: -1; 
+}
+
+/* 2. Estilizar el patrón para que se fusione con el fondo */
+.background .pattern {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply; 
+  opacity: 0.2;
+
+}
+
+.background .up {
+  position: absolute;
+  top: -40%;
+  right: -30%;
+  rotate: 225deg;
+}
+
+.background .down {
+  position: absolute;
+  bottom: -40%;
+  left: -30%;
+  rotate: 45deg;
+}
+
+h1{
+    color: var(--negro-quemado);
+    font-size: 4.5rem;
+    margin: 0;
+    text-align: center;
+}
+
+.content h2{
+    color: var(--White);
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 0;
+}
+
+.background p{
+    color: #1a1a1a;
+    font-size: 1.3rem;
+    margin: 0;
+    text-align: center;
+    font-weight: 500;
+}
+
+.login .content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.content form {
+  background-color: var(--fondo-card);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px); /* Efecto esmerilado moderno */
+  border: 1px solid rgba(196, 155, 85, 0.2); /* Borde sutil dorado */
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Contenedor de cada grupo de input */
+.inputs {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  margin-top: 1.5rem;
+}
+
+/* Etiquetas (Labels) */
+.inputs label {
+  color: var(--dorado-guanerita);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Campos de texto (Inputs) */
+.inputs input {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  color: var(--blanco);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+/* Efecto al hacer clic en el input */
+.inputs input:focus {
+  border-color: var(--dorado-guanerita);
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 8px rgba(196, 155, 85, 0.4);
+}
+
+/* Botón de Iniciar Sesión */
+.content form button {
+  background-color: var(--dorado-guanerita);
+  color: #111111; /* Texto oscuro para que contraste con el dorado */
+  border: none;
+  border-radius: 6px;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Efecto Hover del botón */
+.content form button:hover {
+  background-color: var(--dorado-oscuro);
+  box-shadow: 0 4px 15px rgba(196, 155, 85, 0.4);
+  transform: translateY(-1px);
+  color: var(--blanco);
+}
+
+.content form button:active {
+  transform: translateY(1px);
+}

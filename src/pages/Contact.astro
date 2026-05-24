@@ -1,0 +1,50 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/navigation.astro";
+import "../css/Contact.css";
+---
+
+<Layout>
+    <Navigation />
+    <section class="guanerita-contact">
+  <div class="contact-container">
+    
+    <div class="contact-header">
+      <span class="subtitle">Contacto</span>
+      <h2>Lleva la Experiencia a tu Mesa</h2>
+      <p class="contact-description">
+        ¿Listo para disfrutar del verdadero carácter del Chicamocha? Conéctate con nosotros directamente. Estamos a un clic de distancia para tomar tu pedido o compartir nuestra cultura cervecera.
+      </p>
+    </div>
+
+    <div class="contact-channels">
+      
+      <a href="https://api.whatsapp.com/send?phone=573002913369&text=Hola!%20Me%20gustar%C3%ADa%20realizar%20un%20pedido%20%F0%9F%8D%BB" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="channel-card whatsapp-card">
+        <div class="channel-content">
+          <span class="channel-action">Haz tu Pedido</span>
+          <h3>WhatsApp Directo</h3>
+          <p>Escríbenos para despachos, eventos o dudas inmediatas. ¡Destapemos una conversación!</p>
+        </div>
+        <span class="channel-arrow">→</span>
+      </a>
+
+      <a href="https://www.instagram.com/7monastery/" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="channel-card instagram-card">
+        <div class="channel-content">
+          <span class="channel-action">Comunidad</span>
+          <h3>Instagram Oficial</h3>
+          <p>Sigue nuestro viaje, procesos y el día a día de Guanerita desde el corazón de Santander.</p>
+        </div>
+        <span class="channel-arrow">→</span>
+      </a>
+
+    </div>
+
+  </div>
+</section>
+</Layout>

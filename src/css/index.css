@@ -5,17 +5,23 @@
   --crema-suave: #d9c5a0;
   --sombra-medieval: 0 10px 30px rgba(0, 0, 0, 0.7);
   --borde-pergamino: 1px solid rgba(217, 197, 160, 0.3);
+  --dorado-guanerita-rgb: 196, 155, 85;
 }
 
 body {
   max-width: 1920px;
   width: 100vw;
-  margin: 0;
+  min-height: 100vh; 
+  margin: 0 auto;    
   padding: 0;
-  background: var(--negro-quemado);
   color: var(--crema-suave);
   overflow-x: hidden;
-  margin: auto;
+
+  background: 
+    radial-gradient(circle at 1px 1px, rgba(var(--dorado-guanerita-rgb), 0.15) 1px, transparent 0),
+    var(--negro-quemado);
+  
+  background-size: 24px 24px; 
 }
 
 .hidden{
@@ -80,7 +86,7 @@ body {
   cursor: pointer;
   transition: 0.3s;
   border: 1px solid var(--dorado-guanerita);
-  background: var(--dorado-guanerita);
+  background-color: var(--dorado-guanerita);
   color: var(--negro-quemado);
   box-shadow: 0 0 10px var(--dorado-guanerita);
 }
@@ -92,7 +98,6 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: var(--negro-quemado);
   z-index: 10;
 }
 

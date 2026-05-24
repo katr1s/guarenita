@@ -1,0 +1,79 @@
+:root {
+  --fondo-gris: #313131e3;
+  --dorado-guanerita: #c49b55;
+  --negro-quemado: #1a1a19;
+  --crema-suave: #d9c5a0;
+  --sombra-medieval: 0 10px 30px rgba(0, 0, 0, 0.7);
+  --borde-pergamino: 1px solid rgba(217, 197, 160, 0.3);
+  --dorado-guanerita-rgb: 196, 155, 85;
+}
+
+body {
+  max-width: 1920px;
+  width: 100vw;
+  min-height: 100vh; 
+  margin: 0 auto;    
+  padding: 0;
+  color: var(--crema-suave);
+  overflow-x: hidden;
+
+  background: 
+    radial-gradient(circle at 1px 1px, rgba(var(--dorado-guanerita-rgb), 0.15) 1px, transparent 0),
+    var(--negro-quemado);
+  
+  background-size: 24px 24px; 
+}
+
+h1,h2,h3,h4{
+  font-family: "Playfair Display", serif;
+  letter-spacing: 3px;
+}
+
+p{
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+
+.brand-story, .brand-inspiration, .brand-territory {
+  padding: 5rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.subtitle {
+  color: var(--dorado-guanerita);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-family: 'Playfair Display', serif; /* O tu tipografía Serif */
+  font-size: 2.8rem;
+  color: var(--crema-suave);
+  margin-bottom: 1.5rem;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--crema-suave);
+  opacity: 0.85;
+  max-width: 750px;
+  margin: 0 auto 1.5rem auto;
+}
+
+blockquote {
+  font-style: italic;
+  color: var(--dorado-guanerita);
+  font-size: 1.3rem;
+  margin-top: 2rem;
+  border-left: 3px solid var(--dorado-guanerita);
+  padding-left: 1rem;
+  display: inline-block;
+  max-width: 600px;
+}
