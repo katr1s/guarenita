@@ -158,5 +158,61 @@ import "../css/index.css";
     }, "-=1.5");
 
   });
+
+  gsap.to(".boxCounter img", {
+    // Abrimos el clip-path de arriba hacia abajo
+    clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+    ease: "power2.out",
+    duration: 1.5,
+    stagger: 0.3, // Efecto cascada: Miel -> Café -> Trigo
+    scrollTrigger: {
+      trigger: ".counter",        // Dispara la animación cuando aparece .counter
+      start: "top 90%",           // Inicia cuando el contenedor llega al 75% del viewport
+      end: "bottom 100%",
+      scrub: 1,                   // Sincronizado suavemente con el scroll
+    }
+  });
+
+  // --- NUEVA ANIMACIÓN: El Ritual Detrás del Cáliz ---
+    const tlRitual = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".reference",       // Dispara cuando aparece la sección
+        start: "top 75%",            // Inicia cuando el tope de la sección llega al 75% de la pantalla
+        end: "top 30%",              // Termina de animarse en este rango
+        scrub: 1,                    // Sincronización suave con el scroll
+      }
+    });
+
+    // 1. La ilustración lineal de materia prima aparece desde la izquierda con un sutil fade
+    tlRitual.from(".reference .part_1 img", {
+      x: -60,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power2.out"
+    }, 0);
+
+    // 2. El bloque de texto (<article>) entra desde la derecha
+    tlRitual.from(".reference .part_1 article", {
+      x: 60,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power2.out"
+    }, 0);
+
+    // 3. Detalle premium: desfasamos sutilmente los elementos internos del artículo para dar ritmo
+    tlRitual.from(".reference h2", {
+      y: 20,
+      opacity: 0,
+      duration: 0.6,
+      ease: "power1.out"
+    }, 0.4);
+
+    tlRitual.from(".reference p", {
+      y: 20,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power1.out"
+    }, 0.6);
+
   </script>
 </Layout>

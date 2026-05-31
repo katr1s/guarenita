@@ -1,69 +1,194 @@
 <nav>
-    <div class="logotype">
-        <a href="/">Guanerita</a>
-    </div>
+  <div class="logotype">
+    <a href="/">Guanerita</a>
+  </div>
 
-    <div class="user">
-        <a href="/Productos">Productos</a>
-        <a href="/About">Acerca</a>
-        <a href="/Contact">Contactanos</a>
+  <div class="user" id="nav-menu">
+    <a href="/Productos">Productos</a>
+    <a href="/About">Acerca</a>
+    <a href="/Contact">Contáctanos</a>
 
-        <a href="/Account/Login" class="button">Iniciar sesion</a>
+    <div class="nav-actions">
+      <a href="/Shopping" class="cart-icon">
+        <img src="./shopping.svg" alt="Mis compras">
+      </div>
+      <a href="/Account/Login" class="button">Iniciar sesión</a>
     </div>
+  </div>
+
+  <button class="menu" id="menu-toggle" aria-label="Abrir menú">
+    <img src="./menu (2).svg" alt="Menú">
+  </button>
 </nav>
 
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    menuToggle.classList.toggle('open');
+  });
+</script>
+
 <style>
-    a{
-        text-decoration: none;
+  a {
+    text-decoration: none;
+    transition: color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  nav {
+    width: 95%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    position: relative;
+    z-index: 100; /* Asegura que esté por encima de los overlays y héroes */
+  }
+
+  .logotype {
+    z-index: 110; /* El logo se queda arriba siempre */
+  }
+
+  .logotype a {
+    color: var(--dorado-guanerita);
+    font-size: 2.2rem;
+    font-family: "Playfair Display", serif;
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 110; /* El botón de menú debe ser accesible sobre la cortina */
+    transition: transform 0.3s ease;
+  }
+
+  .menu img {
+    width: 30px;
+    height: 30px;
+    /* Un truco por si tu SVG es negro: ponerle filtro crema sutil */
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.5)); 
+  }
+
+  /* El contenedor .user se convierte en el menú de cortina en móviles */
+  .user {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Oculto completamente a la derecha */
+    width: 75%; /* Ocupa gran parte de la pantalla */
+    max-width: 320px;
+    height: 100vh;
+    background-color: rgba(26, 26, 25, 0.98); /* --negro-quemado con opacidad mística */
+    border-left: 1px solid rgba(217, 197, 160, 0.15); /* --borde-pergamino */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    padding: 40px 20px;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Animación fluida tipo cortina */
+  }
+
+  /* Clase que activa el JS para mostrar el menú */
+  .user.active {
+    right: 0; 
+  }
+
+  .user a {
+    color: var(--crema-suave);
+    font-size: 1.4rem;
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: 1px;
+  }
+
+  .user a:hover {
+    color: var(--dorado-guanerita);
+  }
+
+  .nav-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .cart-icon img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .user .button {
+    background-color: var(--dorado-guanerita);
+    border: 1px solid var(--dorado-guanerita);
+    padding: 10px 20px;
+    color: var(--negro-quemado);
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    width: 80%; /* Botón ancho cómodo para tocar con el pulgar */
+  }
+
+  .user .button:hover{
+    color: var(--negro-quemado);
+  }
+
+  /* Animación de rotación sutil al botón de menú al abrirse */
+  .menu.open {
+    transform: rotate(90deg);
+  }
+
+  /* ==========================================================================
+     ESTILOS PARA PC / ESCRITORIO (Pantallas mayores a 768px)
+     ========================================================================== */
+  @media screen refinement and (min-width: 768px) {
+    .menu {
+      display: none; /* Ocultamos el botón de hamburguesa en PC */
     }
 
-    nav{
-        width: 95%;
-        height: 70px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 0 auto;
-        z-index: 11;
+    /* Restauramos el flujo horizontal original */
+    .user {
+      position: static;
+      width: auto;
+      max-width: none;
+      height: auto;
+      background-color: transparent;
+      border-left: none;
+      box-shadow: none;
+      flex-direction: row;
+      gap: 24px;
+      padding: 0;
+      transition: none;
     }
 
-    .logotype{
-        width: 50%;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
+    .user a {
+      font-size: 1.1rem;
     }
 
-    .user{
-        width: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 20px;
+    .nav-actions {
+      flex-direction: row;
+      gap: 20px;
+      width: auto;
+      margin-top: 0;
     }
 
-    .logotype a{
-        color: var(--dorado-guanerita);
-        font-size: 2.2rem;
+    .user .button {
+      padding: 6px 14px;
+      width: auto;
     }
 
-    .user a{
-        color: var(--crema-suave);
-        font-size: 1.3rem;
+    .user .button:hover {
+      box-shadow: 0 0 10px var(--dorado-guanerita);
+      background-color: transparent;
+      color: var(--dorado-guanerita);
     }
-
-    .user .button{
-        background-color: transparent;
-        border: 1px solid var(--dorado-guanerita);
-        padding: 5px 7px;
-        background-color: var(--dorado-guanerita);
-        color: var(--negro-quemado);
-        cursor: pointer;
-        font-size: 1rem;
-    }
-
-    .user .button:hover{
-        box-shadow: 0 0 7px var(--dorado-guanerita);
-        transition: 0.5s;
-    }
+  }
 </style>

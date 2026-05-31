@@ -8,23 +8,34 @@
   --dorado-guanerita-rgb: 196, 155, 85;
 }
 
+html {
+  scrollbar-width: thin; /* Barra delgada nativa */
+  scrollbar-color: var(--dorado-guanerita) transparent; /* El primer color es el tirador, el segundo el fondo */
+}
+
+
+
 body {
   max-width: 1920px;
   width: 100vw;
-  min-height: 100vh; 
-  margin: 0 auto;    
+  min-height: 100vh;
+  margin: 0 auto;
   padding: 0;
   color: var(--crema-suave);
   overflow-x: hidden;
 
-  background: 
-    radial-gradient(circle at 1px 1px, rgba(var(--dorado-guanerita-rgb), 0.15) 1px, transparent 0),
+  background:
+    radial-gradient(
+      circle at 1px 1px,
+      rgba(var(--dorado-guanerita-rgb), 0.15) 1px,
+      transparent 0
+    ),
     var(--negro-quemado);
-  
-  background-size: 24px 24px; 
+
+  background-size: 24px 24px;
 }
 
-.hidden{
+.hidden {
   overflow: hidden;
 }
 
@@ -144,7 +155,7 @@ body {
     align-items: center;
   }
 
-  .bottle{
+  .bottle {
     width: 90%;
     filter: drop-shadow(0 0 100px var(--dorado-guanerita));
     user-select: none;
@@ -153,24 +164,40 @@ body {
   }
 }
 
-.about .poster{
+.about .poster {
   width: 300px;
   opacity: 0.35;
   user-select: none;
-  transform: rotate(10deg);
   mix-blend-mode: screen;
   filter: blur(0.4px) contrast(1.2);
   pointer-events: none;
+  animation: rotacionMistica 30s linear infinite;
+  transition: opacity 0.5s ease, filter 0.5s ease, scale 0.5s ease;
+}
+
+@keyframes rotacionMistica {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.about .poster:hover {
+  opacity: 0.75; /* Se enciende y gana protagonismo */
+  filter: blur(0px) contrast(1.4) drop-shadow(0 0 15px rgba(var(--dorado-guanerita-rgb), 0.3)); /* Resalta los grabados */
+  scale: 1.05; /* Un leve crecimiento orgánico */
+  cursor: help; /* Un detalle UI místico */
 }
 
 .about p {
-  font-size: clamp(1rem, 3.8vh ,2.5rem);
+  font-size: clamp(1rem, 3.8vh, 2.5rem);
   color: var(--crema-suave);
   font-family: "Montserrat", sans-serif;
 }
 
-
-.information{
+.information {
   width: 100%;
   height: 600px;
   display: flex;
@@ -178,7 +205,7 @@ body {
   align-items: center;
 }
 
-.information .content{
+.information .content {
   width: 95%;
   height: 100%;
   display: flex;
@@ -186,7 +213,8 @@ body {
   align-items: center;
 }
 
-.info, .data{
+.info,
+.data {
   width: 35%;
   height: 100%;
   display: flex;
@@ -194,54 +222,52 @@ body {
   justify-content: center;
 }
 
-.info{
+.info {
   align-items: flex-start;
 }
 
-.information h2{
+.information h2 {
   font-size: clamp(2.5rem, 8vw, 3.5rem);
   color: var(--dorado-guanerita);
   font-family: "Playfair Display", serif;
   letter-spacing: 3px;
   filter: drop-shadow(0 0 5px var(--negro-quemado))
     drop-shadow(0 0 15px rgba(0, 0, 0, 0.6));
-    margin: 0;
-    line-height: 45px;
-
+  margin: 0;
+  line-height: 45px;
 }
 
 .information p {
-  font-size: clamp(1rem, 3.8vh ,2.5rem);
+  font-size: clamp(1rem, 3.8vh, 2.5rem);
   color: var(--crema-suave);
   font-family: "Montserrat", sans-serif;
 }
 
-.information h3{
+.information h3 {
   font-size: 1.5rem;
   color: var(--crema-suave);
   font-family: "Playfair Display", serif;
   letter-spacing: 3px;
   filter: drop-shadow(0 0 5px var(--negro-quemado))
     drop-shadow(0 0 15px rgba(0, 0, 0, 0.6));
-    margin: 0;
-    line-height: 45px;
+  margin: 0;
+  line-height: 45px;
 }
 
-.data{
+.data {
   border: 1px solid var(--dorado-guanerita);
   height: 350px;
   width: 300px;
-  padding: 0 30px ;
+  padding: 0 30px;
   align-items: flex-end;
 }
 
-.data .line{
+.data .line {
   width: 100%;
   border-bottom: 1px solid var(--crema-suave);
 }
 
-
-.counter{
+.counter {
   width: 100%;
   height: 100vh;
   display: flex;
@@ -249,7 +275,7 @@ body {
   align-items: center;
   position: relative;
 
-  .perro{
+  .perro {
     position: absolute;
     width: 250px;
     top: 0;
@@ -260,7 +286,7 @@ body {
   overflow: hidden;
 }
 
-.counter .backgroundCounter{
+.counter .backgroundCounter {
   width: 100%;
   height: 100%;
   display: flex;
@@ -270,7 +296,7 @@ body {
   overflow: hidden;
 }
 
-.counter .boxCounter{
+.counter .boxCounter {
   width: 33.33%;
   height: 100%;
   display: flex;
@@ -279,14 +305,20 @@ body {
   overflow: hidden;
   position: relative;
 
-  img{
+  img {
     width: 100%;
     height: 100%;
     position: relative;
+    object-fit: cover;
   }
 }
 
-.counter .box_after_1::after{
+.counter .boxCounter:hover img {
+  transform: scale(1.08); /* Zoom fluido hacia el frente */
+  filter: sepia(0%) brightness(1.1) contrast(1); /* Recupera la viveza del color original */
+}
+
+.counter .box_after_1::after {
   content: "";
   width: 100%;
   height: 100%;
@@ -296,7 +328,7 @@ body {
   opacity: 0.7;
 }
 
-.counter .box_after_2::after{
+.counter .box_after_2::after {
   content: "";
   width: 100%;
   height: 100%;
@@ -306,7 +338,19 @@ body {
   opacity: 0.7;
 }
 
-.counter .box_after_3::after{
+.counter .box_after_1:hover::after {
+  background-color: transparent;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.counter .box_after_2:hover::after {
+  background-color: transparent;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.counter .box_after_3::after {
   content: "";
   width: 100%;
   height: 100%;
@@ -315,7 +359,14 @@ body {
   position: absolute;
   opacity: 0.7;
 }
-.counter .content{
+
+.counter .box_after_3:hover::after {
+  background-color: transparent;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.counter .content {
   margin-top: 50px;
   width: 400px;
   height: 200px;
@@ -328,7 +379,7 @@ body {
   border: 2px solid var(--crema-suave);
 }
 
-.counter .card{
+.counter .card {
   width: 40%;
   height: 100%;
   display: flex;
@@ -337,7 +388,7 @@ body {
   flex-direction: column;
 }
 
-.content h5{
+.content h5 {
   font-size: 1.4rem;
   text-align: center;
   color: var(--crema-suave);
@@ -345,11 +396,11 @@ body {
   letter-spacing: 3px;
   filter: drop-shadow(0 0 5px var(--negro-quemado))
     drop-shadow(0 0 15px rgba(0, 0, 0, 0.6));
-    margin: 0;
-    line-height: 45px;
+  margin: 0;
+  line-height: 45px;
 }
 
-.content h6{
+.content h6 {
   font-size: 1.3rem;
   text-align: center;
   color: var(--crema-suave);
@@ -357,17 +408,17 @@ body {
   letter-spacing: 3px;
   filter: drop-shadow(0 0 5px var(--negro-quemado))
     drop-shadow(0 0 15px rgba(0, 0, 0, 0.6));
-    margin: 0;
-    line-height: 45px;
+  margin: 0;
+  line-height: 45px;
 }
 
-.counter .line{
+.counter .line {
   width: 2px;
   height: 75%;
   background-color: var(--crema-suave);
 }
 
-.counter .lupulo_1{
+.counter .lupulo_1 {
   left: 0;
   width: 350px;
   rotate: 225deg;
@@ -378,7 +429,7 @@ body {
   opacity: 0.2;
 }
 
-.counter .lupulo_2{
+.counter .lupulo_2 {
   opacity: 0.2;
   right: 0;
   width: 350px;
@@ -389,15 +440,16 @@ body {
   rotate: 45deg;
 }
 
-.reference{
+.reference {
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
-.reference .content{
+.reference .content {
   width: 95%;
   height: 100%;
   display: flex;
@@ -406,131 +458,137 @@ body {
   align-items: center;
 }
 
-.reference .content .part_1{
+.reference .content .part_1 {
   width: 100%;
   height: 70%;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 40px;
 
-  img{
-    width: 50%;
+  img {
+    width: 45%; /* Ajustado ligeramente para dar aire */
+    object-fit: cover;
+    /* Un leve filtro de brillo para que la ilustración lineal resalte sobre el fondo negro */
+    filter: drop-shadow(0 0 20px rgba(var(--dorado-guanerita-rgb), 0.1));
   }
 }
 
-
-.reference .content .part_1 article{
+.reference .content .part_1 article {
   width: 50%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  will-change: transform, opacity;
 }
 
-.reference h2{
+.reference h2 {
   font-size: clamp(2.5rem, 8vw, 3.5rem);
   color: var(--dorado-guanerita);
   font-family: "Playfair Display", serif;
   letter-spacing: 3px;
   filter: drop-shadow(0 0 5px var(--negro-quemado))
-    drop-shadow(0 0 15px rgba(0, 0, 0, 0.6)) ;
-    margin: 0;
-    line-height: 45px;
+    drop-shadow(0 0 15px rgba(0, 0, 0, 0.6));
+  margin: 0;
+  line-height: 45px;
 }
 
 .reference p {
-  font-size: clamp(1rem, 3.8vh ,2.5rem);
+  font-size: clamp(1rem, 3.8vh, 2.5rem);
   color: var(--crema-suave);
   font-family: "Montserrat", sans-serif;
 }
 @media screen and (max-width: 1200px) {
-  .about{
+  .about {
     height: auto;
   }
 
-  .about .part_2{
+  .about .part_2 {
     flex-direction: column;
 
-    .box{
+    .box {
       width: 100%;
       height: 300px;
     }
   }
 
-  .about .part_2 .bottle{
+  .about .part_2 .bottle {
     width: auto;
     height: 150%;
   }
 
-  .about h2{
+  .about h2 {
     margin: 0;
   }
 
-  .about p, .reference p{
+  .about p,
+  .reference p {
     text-align: center;
     padding: 0;
     font-size: 1.2rem;
   }
 
-  .about .part_2 .box_3{
+  .about .part_2 .box_3 {
     display: none;
   }
 
-  .about .poster{
+  .about .poster {
     display: none;
   }
 
-  .information{
+  .information {
     display: none;
   }
 
-  .information .content{
+  .information .content {
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
-  .information .info{
+  .information .info {
     justify-content: center;
     align-items: center;
   }
 
-
-  .information h2, .reference h2{
+  .information h2,
+  .reference h2 {
     font-size: 2.5rem;
     text-align: center;
     padding: 0;
   }
 
-  .counter{
+  .counter {
     margin-top: 80px;
   }
 
-  .counter .boxCounter{
+  .counter .boxCounter {
     width: 100%;
   }
 
-  .counter .box_after_1, .counter .box_after_3{
+  .counter .box_after_1,
+  .counter .box_after_3 {
     display: none;
   }
 
-  .reference .part_1{
+  .reference .part_1 {
     flex-direction: column;
   }
 
-  .reference .part_1 img{
+  .reference .part_1 img {
     width: auto;
     height: 50%;
   }
 
-  .reference .part_1 article{
+  .reference .part_1 article {
     width: 100%;
     height: 50%;
   }
 
-  .contact{
-    img{
+  .contact {
+    img {
       bottom: 0;
     }
   }

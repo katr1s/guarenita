@@ -1,110 +1,163 @@
-<footer class="contact">
-    <img src="./chicamocha.png" alt="" class="chica">
-  <div class="contact-container">
-    <div class="contact-header">
-      <h2>Escribe tu propia historia</h2>
-      <p>
-        ¿Tienes dudas sobre nuestras maltas o quieres llevar a Guanerita a tu
-        mesa? Déjanos un mensaje.
-      </p>
-    </div>
-
+<section class="contact">
+  <div class="contact-box">
+    <h2>Escríbenos desde tu Tierra</h2>
+    <p>Déjanos un mensaje y despertemos juntos la fuerza del ritual.</p>
+    
     <form class="contact-form">
       <div class="input-group">
-        <label for="name">Nombre de pila</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Ej. Juan de la Tierra"
-          required
-        />
+        <input type="text" id="name" required placeholder=" " />
+        <label for="name">Tu Nombre</label>
+        <span class="input-line"></span>
       </div>
 
       <div class="input-group">
-        <label for="email">Correo electrónico</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="tu@correo.com"
-          required
-        />
+        <input type="email" id="email" required placeholder=" " />
+        <label for="email">Correo Electrónico</label>
+        <span class="input-line"></span>
       </div>
 
       <div class="input-group">
-        <label for="message">Tu mensaje</label>
-        <textarea
-          id="message"
-          name="message"
-          rows="4"
-          placeholder="Háblanos de tu interés en nuestra alquimia..."
-        ></textarea>
+        <textarea id="message" required placeholder=" "></textarea>
+        <label for="message">Tu Mensaje u Opinión</label>
+        <span class="input-line"></span>
       </div>
 
       <button type="submit" class="btn-submit">Enviar Mensaje</button>
     </form>
   </div>
-</footer>
+</section>
 
 <style>
-  .contact {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-  }
+.contact {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+  padding: 60px 20px;
+}
 
-  .chica{
-    width: 100%;
-    position: absolute;
-    z-index: 2;
-    opacity: 0.1;
-    mix-blend-mode: screen;
-    z-index: 2;
-  }
+.contact-box {
+  width: 100%;
+  max-width: 600px;
+  border: var(--borde-pergamino);
+  padding: 40px;
+  box-shadow: var(--sombra-medieval);
+  backdrop-filter: blur(8px);
+  text-align: center;
+}
 
-  .contact-container {
-    max-width: 600px;
-    z-index: 3;
-    width: 100%;
-    border: 1px solid rgba(212, 175, 55, 0.3); /* Un dorado tenue */
-    padding: 40px;
-    background: linear-gradient(145deg, #0a0a0a, #121212);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  }
+.contact-box h2 {
+  font-family: "Playfair Display", serif;
+  color: var(--dorado-guanerita);
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 10px;
+}
 
-  .contact-form input,
-  .contact-form textarea {
-    width: 100%;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid var(--dorado-guanerita);
-    color: #f0f0f0;
-    padding: 10px 0;
-    margin-bottom: 30px;
-    font-family: "Playfair Display", serif;
-    outline: none;
-    resize: none;
-  }
+.contact-box p {
+  font-family: "Montserrat", sans-serif;
+  color: var(--crema-suave);
+  opacity: 0.8;
+  margin-bottom: 40px;
+  font-size: 1rem;
+}
 
-  /* El botón con el estilo del "Probar ahora" */
-  .btn-submit {
-    background-color: var(--dorado-guanerita);
-    color: var(--negro-quemado);
-    border: none;
-    padding: 15px 40px;
-    font-weight: bold;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
+/* --- Contenedor de Inputs Animados --- */
+.input-group {
+  position: relative;
+  margin-bottom: 35px;
+  width: 100%;
+}
 
-  .btn-submit:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px var(--dorado-guanerita);
-  }
+/* Estilos base para Inputs y Textarea */
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 12px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(217, 197, 160, 0.3); /* Línea sutil */
+  outline: none;
+  color: var(--crema-suave);
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.1rem;
+  transition: border-color 0.3s ease;
+}
+
+.input-group textarea {
+  height: 100px;
+  resize: none;
+}
+
+/* Estilos de la etiqueta (Label) que va a flotar */
+.input-group label {
+  position: absolute;
+  left: 0;
+  top: 12px;
+  color: var(--crema-suave);
+  opacity: 0.6; /* Corregido el contraste para accesibilidad */
+  font-family: "Montserrat", sans-serif;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* --- EFECTO MÁGICO: Cuando el input tiene foco o texto escrito --- */
+.input-group input:focus ~ label,
+.input-group input:not(:placeholder-shown) ~ label,
+.input-group textarea:focus ~ label,
+.input-group textarea:not(:placeholder-shown) ~ label {
+  top: -15px;
+  font-size: 0.85rem;
+  color: var(--dorado-guanerita);
+  opacity: 1;
+  letter-spacing: 1px;
+}
+
+/* Línea dorada expansiva en el fondo al hacer foco */
+.input-line {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--dorado-guanerita);
+  transition: all 0.4s ease;
+}
+
+.input-group input:focus ~ .input-line,
+.input-group textarea:focus ~ .input-line {
+  width: 100%;
+  left: 0;
+  box-shadow: 0 0 8px rgba(var(--dorado-guanerita-rgb), 0.5);
+}
+
+/* --- El Botón de Envío Metálico --- */
+.btn-submit {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.1rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--negro-quemado);
+  background-color: var(--dorado-guanerita);
+  border: 1px solid var(--dorado-guanerita);
+  box-shadow: 0 4px 15px rgba(var(--dorado-guanerita-rgb), 0.2);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-submit:hover {
+  background-color: transparent;
+  color: var(--dorado-guanerita);
+  box-shadow: 0 0 20px rgba(var(--dorado-guanerita-rgb), 0.6);
+  transform: translateY(-2px);
+}
+
+.btn-submit:active {
+  transform: translateY(1px);
+}
 </style>
