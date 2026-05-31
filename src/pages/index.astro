@@ -97,15 +97,16 @@ import "../css/index.css";
 
   <Contact />
   <script>
-    const ok = document.querySelector(".yes");
-    const mayor = document.querySelector(".mayor");
-    const body = document.querySelector(".body");
+  const ok = document.querySelector(".yes");
+  const mayor = document.querySelector(".mayor");
+  const body = document.querySelector(".body");
 
+  if (ok && mayor) {
     ok.addEventListener("click", () => {
       mayor.classList.add("ocultar");
-      body.classList.remove("hidden");
+      if (body) body.classList.remove("hidden");
     });
-
+  }
 
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -113,77 +114,82 @@ import "../css/index.css";
   gsap.registerPlugin(ScrollTrigger);
 
   window.addEventListener("load", () => {
-    const tl = gsap.timeline({
+    // Creamos el validador de medios de GSAP
+    let mm = gsap.matchMedia();
+
+    // 💻 CONDICIÓN PARA PC (Pantallas mayores a 1200px)
+    mm.add("(min-width: 1201px)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".about", 
+          start: "top bottom", 
+          end: "top top",      
+          scrub: 1,        
+        }
+      });
+
+      tl.to(".hero", {
+        opacity: 0,
+        y: -100,
+        duration: 1
+      }, 0);
+
+      tl.fromTo(".about", 
+        { y: 300, opacity: 0 }, 
+        { y: 0, opacity: 1, duration: 1 }, 
+        0
+      );
+
+      // la seccion sube y aparece
+      tl.from(".about .part_1, .about .box:not(:has(.bottle))", {
+        y: 50,
+        opacity: 0,
+        stagger: 0.2,
+        duration: 0.5
+      });
+
+      // la botella baja (ESTO YA NO SE EJECUTARÁ EN MÓVIL)
+      tl.to(".bottle", {
+        y: 450, 
+        ease: "power1.inOut",
+        duration: 2 
+      });
+
+      // sello animacion
+      tl.fromTo(".poster", 
+        { scale: 0, opacity: 0 }, 
+        { scale: 1, opacity: 0.35, duration: 0.6, ease: "back.out(1.5)" }, 
+        "-=1.5"
+      );
+    });
+
+    // 📱 ANIMACIONES PARA TODO DISPOSITIVO (Se ejecutan en Móvil y PC)
+    // Animación de los ingredientes (.counter)
+    gsap.to(".boxCounter img", {
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+      ease: "power2.out",
+      duration: 1.5,
+      stagger: 0.3, 
       scrollTrigger: {
-        trigger: ".about", // About como disparador
-        start: "top bottom", // Empieza cuando el About asoma por abajo
-        end: "top top",      // Termina cuando el About llega al tope de la pantalla
-        scrub: 1,        
+        trigger: ".counter",        
+        start: "top 90%",           
+        end: "bottom 100%",
+        scrub: 1,                   
       }
     });
 
-    tl.to(".hero", {
-      opacity: 0,
-      y: -100,
-      duration: 1
-    }, 0);
+    
 
-    tl.fromTo(".about", 
-      { y: 300, opacity: 0 }, 
-      { y: 0, opacity: 1, duration: 1 }, 
-      0
-    );
-
-    // la seccion sube y aparece
-    tl.from(".about .part_1, .about .box:not(:has(.bottle))", {
-      y: 50,
-      opacity: 0,
-      stagger: 0.2,
-      duration: 0.5
-    });
-
-    // la botella baja 
-    tl.to(".bottle", {
-      y: 450, // La botella baja los 400px
-      ease: "power1.inOut",
-      duration: 2 // duración para que dure el resto del scroll de la sección
-    });
-
-    // sello animacion
-    tl.from(".poster", {
-      scale: 0,
-      rotation: -180,
-      opacity: 0,
-      duration: 0.5
-    }, "-=1.5");
-
-  });
-
-  gsap.to(".boxCounter img", {
-    // Abrimos el clip-path de arriba hacia abajo
-    clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-    ease: "power2.out",
-    duration: 1.5,
-    stagger: 0.3, // Efecto cascada: Miel -> Café -> Trigo
-    scrollTrigger: {
-      trigger: ".counter",        // Dispara la animación cuando aparece .counter
-      start: "top 90%",           // Inicia cuando el contenedor llega al 75% del viewport
-      end: "bottom 100%",
-      scrub: 1,                   // Sincronizado suavemente con el scroll
-    }
-  });
-
-  // --- NUEVA ANIMACIÓN: El Ritual Detrás del Cáliz ---
+    // Animación de El Ritual Detrás del Cáliz (.reference)
     const tlRitual = gsap.timeline({
       scrollTrigger: {
-        trigger: ".reference",       // Dispara cuando aparece la sección
-        start: "top 75%",            // Inicia cuando el tope de la sección llega al 75% de la pantalla
-        end: "top 30%",              // Termina de animarse en este rango
-        scrub: 1,                    // Sincronización suave con el scroll
+        trigger: ".reference",       
+        start: "top 75%",            
+        end: "top 30%",              
+        scrub: 1,                    
       }
     });
 
-    // 1. La ilustración lineal de materia prima aparece desde la izquierda con un sutil fade
     tlRitual.from(".reference .part_1 img", {
       x: -60,
       opacity: 0,
@@ -191,7 +197,6 @@ import "../css/index.css";
       ease: "power2.out"
     }, 0);
 
-    // 2. El bloque de texto (<article>) entra desde la derecha
     tlRitual.from(".reference .part_1 article", {
       x: 60,
       opacity: 0,
@@ -199,7 +204,6 @@ import "../css/index.css";
       ease: "power2.out"
     }, 0);
 
-    // 3. Detalle premium: desfasamos sutilmente los elementos internos del artículo para dar ritmo
     tlRitual.from(".reference h2", {
       y: 20,
       opacity: 0,
@@ -214,5 +218,6 @@ import "../css/index.css";
       ease: "power1.out"
     }, 0.6);
 
-  </script>
+  }); // Cierre del window load
+</script>
 </Layout>
