@@ -500,96 +500,137 @@ body {
   color: var(--crema-suave);
   font-family: "Montserrat", sans-serif;
 }
+
+
+/* ==========================================================================
+   ESTILOS RESPONSIVOS (Móviles, Tablets y Pantallas Medianas)
+   ========================================================================== */
 @media screen and (max-width: 1200px) {
+  
+  /* --- Sección Acerca de (About) --- */
   .about {
     height: auto;
+    padding: 60px 0;
   }
 
   .about .part_2 {
     flex-direction: column;
+    gap: 30px;
 
     .box {
       width: 100%;
-      height: 300px;
+      height: auto;
+      min-height: 250px;
     }
   }
 
   .about .part_2 .bottle {
-    width: auto;
-    height: 150%;
+    width: 65%; /* Ajustado con porcentaje para que no se desborde en pantallas pequeñas */
+    height: auto;
+    max-width: 280px;
+    margin: 0 auto;
   }
 
   .about h2 {
-    margin: 0;
+    margin: 0 0 20px 0;
+    text-align: center;
+    width: 100%;
   }
 
   .about p,
   .reference p {
     text-align: center;
-    padding: 0;
-    font-size: 1.2rem;
+    padding: 0 15px;
+    font-size: 1.1rem;
+    line-height: 1.6;
   }
 
-  .about .part_2 .box_3 {
-    display: none;
-  }
-
-  .about .poster {
-    display: none;
-  }
-
+  /* Ocultamos elementos pesados que dañan el flujo vertical en móviles */
+  .about .part_2 .box_3,
+  .about .poster,
   .information {
-    display: none;
+    display: none !important;
   }
 
-  .information .content {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .information .info {
-    justify-content: center;
-    align-items: center;
-  }
-
-  .information h2,
-  .reference h2 {
-    font-size: 2.5rem;
-    text-align: center;
-    padding: 0;
-  }
-
+  /* --- Sección de Ingredientes (Counter) --- */
   .counter {
-    margin-top: 80px;
+    margin-top: 40px;
+    height: auto; /* Cambiado a auto para que se adapte al flujo vertical */
+    min-height: 100vh;
+    flex-direction: column;
+    padding: 60px 0;
+  }
+
+  .counter .backgroundCounter {
+    position: relative; /* Cambia a relativo para apilarse limpiamente */
+    flex-direction: column;
+    height: auto;
+    width: 90%;
+    gap: 20px;
   }
 
   .counter .boxCounter {
-    width: 100%;
+    width: 100% !important;
+    height: 220px; /* Altura fija cómoda para las tarjetas en móvil */
+    border-radius: 8px;
+    /* Forzamos a que siempre se abra el clip-path en móviles por si GSAP no se ejecuta */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%) !important; 
   }
 
+  /* Forzamos la aparición de las 3 imágenes para que el usuario de celular vea la Miel, Café y Trigo */
   .counter .box_after_1,
+  .counter .box_after_2,
   .counter .box_after_3 {
-    display: none;
+    display: flex !important;
+  }
+
+  /* En móviles quitamos el efecto hover rústico del color para asegurar la lectura del contenido */
+  .counter .boxCounter::after {
+    opacity: 0.55 !important;
+  }
+
+  /* El recuadro del texto central (Rendimiento del negocio/datos) */
+  .counter .content {
+    margin-top: 30px;
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    height: auto;
+    padding: 25px 15px;
+    box-sizing: border-box;
+  }
+
+  /* --- Sección El Ritual Detrás del Cáliz (Reference) --- */
+  .reference {
+    height: auto;
+    padding: 80px 0;
+  }
+
+  .reference .content {
+    width: 90%;
   }
 
   .reference .part_1 {
     flex-direction: column;
+    gap: 40px;
   }
 
   .reference .part_1 img {
-    width: auto;
-    height: 50%;
+    width: 80% !important;
+    max-width: 300px;
+    height: auto;
   }
 
   .reference .part_1 article {
     width: 100%;
-    height: 50%;
+    height: auto;
+    align-items: center; /* Centra el texto del ritual en teléfonos */
   }
 
-  .contact {
-    img {
-      bottom: 0;
-    }
+  .reference h2 {
+    font-size: 2.2rem;
+    text-align: center;
+    padding: 0;
+    margin-bottom: 15px;
   }
 }
