@@ -3,21 +3,50 @@
     <a href="/">Guanerita</a>
   </div>
 
+  <!-- El panel completo -->
   <div class="user" id="nav-menu">
-    <a href="/Productos">Productos</a>
-    <a href="/About">Acerca</a>
-    <a href="/Contact">Contáctanos</a>
-
-    <div class="nav-actions">
-      <a href="/Shopping" class="cart-icon">
-        <img src="./shopping.svg" alt="Mis compras">
-      </div>
-      <a href="/Account/Login" class="button">Iniciar sesión</a>
+    
+    <!-- LADO DE LA IMAGEN: Entra desde la izquierda -->
+    <div class="menu-graphic-panel">
+      <img src="./poster_navbar.webp" alt="Proceso Artesanal" class="panel-img" />
+      <div class="vignette"></div>
+      <div class="panel-badge">Est. 2026</div>
     </div>
+
+    <!-- LADO DEL TEXTO: Entra desde la derecha -->
+    <div class="menu-content-panel">
+      <!-- Botón de cerrar integrado directamente en el panel móvil -->
+      <div class="panel-header-mobile">
+        <span>Menú de Navegación</span>
+      </div>
+
+      <div class="links-container">
+        <a href="/Productos" class="nav-link-premium" data-text="Productos">Productos</a>
+        <a href="/About" class="nav-link-premium" data-text="Acerca">Acerca</a>
+        <a href="/Contact" class="nav-link-premium" data-text="Contáctanos">Contáctanos</a>
+
+        <div class="divider-line"></div>
+
+        <div class="nav-actions-premium">
+          <a href="/Shopping" class="cart-icon-premium">
+            <img src="./shopping.svg" alt="Mis compras" />
+            <span class="cart-text">Ver Carrito</span>
+          </a>
+          <a href="/Account/Login" class="btn-gold-outline">Iniciar sesión</a>
+        </div>
+      </div>
+
+      <div class="panel-footer-premium">
+        <span>Cerveza Independiente</span>
+        <span>Santander, Col.</span>
+      </div>
+    </div>
+
   </div>
 
-  <button class="menu" id="menu-toggle" aria-label="Abrir menú">
-    <img src="./menu (2).svg" alt="Menú">
+  <button class="menu-trigger" id="menu-toggle" aria-label="Menú">
+    <span class="bar"></span>
+    <span class="bar"></span>
   </button>
 </nav>
 
@@ -26,169 +55,313 @@
   const navMenu = document.getElementById('nav-menu');
 
   menuToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
+    const isActive = navMenu.classList.toggle('active');
     menuToggle.classList.toggle('open');
+
+    // Bloqueo estricto del scroll
+    document.body.style.overflow = isActive ? 'hidden' : '';
   });
 </script>
 
 <style>
+  /* ==========================================================================
+     BASE Y NAV MINIMALISTA
+     ========================================================================== */
   a {
     text-decoration: none;
-    transition: color 0.3s ease, box-shadow 0.3s ease;
   }
 
   nav {
     width: 95%;
-    height: 70px;
+    height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
     position: relative;
-    z-index: 100; /* Asegura que esté por encima de los overlays y héroes */
+    z-index: 100;
   }
 
   .logotype {
-    z-index: 110; /* El logo se queda arriba siempre */
+    z-index: 110;
   }
 
   .logotype a {
-    color: var(--dorado-guanerita);
-    font-size: 2.2rem;
+    color: var(--dorado-guanerita, #d9c5a0);
+    font-size: 2rem;
     font-family: "Playfair Display", serif;
+    font-weight: 700;
+    letter-spacing: -1px;
   }
 
-  .menu {
+  /* Hamburguesa Minimalista construida con CSS (Líneas finas) */
+  .menu-trigger {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    gap: 6px;
     background: transparent;
     border: none;
     cursor: pointer;
-    z-index: 3; /* El botón de menú debe ser accesible sobre la cortina */
-    transition: transform 0.3s ease;
-  }
-
-  .menu img {
+    z-index: 110;
     width: 30px;
     height: 30px;
-    /* Un truco por si tu SVG es negro: ponerle filtro crema sutil */
-    filter: drop-shadow(0 0 2px rgba(0,0,0,0.5)); 
+    padding: 0;
   }
 
-  /* El contenedor .user se convierte en el menú de cortina en móviles */
-  .user {
-    position: absolute;
-    top: 0;
-    right: -100%; /* Oculto completamente a la derecha */
-    width: 75%; /* Ocupa gran parte de la pantalla */
-    max-width: 320px;
-    height: 100vh;
-    background-color: rgba(26, 26, 25, 0.98); /* --negro-quemado con opacidad mística */
-    border-left: 1px solid rgba(217, 197, 160, 0.15); /* --borde-pergamino */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 35px;
-    padding: 40px 20px;
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
-    transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Animación fluida tipo cortina */
-  }
-
-  /* Clase que activa el JS para mostrar el menú */
-  .user.active {
-    right: 0; 
-  }
-
-  .user a {
-    color: var(--crema-suave);
-    font-size: 1.4rem;
-    font-family: "Montserrat", sans-serif;
-    letter-spacing: 1px;
-  }
-
-  .user a:hover {
-    color: var(--dorado-guanerita);
-  }
-
-  .nav-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
+  .menu-trigger .bar {
     width: 100%;
-    margin-top: 20px;
+    height: 2px;
+    background-color: var(--crema-suave, #f5f5f4);
+    transition: transform 0.3s ease, background-color 0.3s ease;
   }
 
-  .cart-icon img {
-    width: 28px;
-    height: 28px;
+  /* Animación a "X" al abrir */
+  .menu-trigger.open .bar:nth-child(1) {
+    transform: translateY(4px) rotate(45deg);
+    background-color: var(--dorado-guanerita, #d9c5a0);
   }
-
-  .user .button {
-    background-color: var(--dorado-guanerita);
-    border: 1px solid var(--dorado-guanerita);
-    padding: 10px 20px;
-    color: var(--negro-quemado);
-    font-size: 1rem;
-    font-weight: bold;
-    text-align: center;
-    width: 80%; /* Botón ancho cómodo para tocar con el pulgar */
-  }
-
-  .user .button:hover{
-    color: var(--negro-quemado);
-  }
-
-  /* Animación de rotación sutil al botón de menú al abrirse */
-  .menu.open {
-    transform: rotate(90deg);
+  .menu-trigger.open .bar:nth-child(2) {
+    transform: translateY(-4px) rotate(-45deg);
+    background-color: var(--dorado-guanerita, #d9c5a0);
   }
 
   /* ==========================================================================
-     ESTILOS PARA PC / ESCRITORIO (Pantallas mayores a 768px)
+     DISEÑO DEL MENÚ FULL SCREEN (Móvil por defecto)
      ========================================================================== */
-  @media screen refinement and (min-width: 768px) {
-    .menu {
-      display: none; /* Ocultamos el botón de hamburguesa en PC */
+  .user {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 105;
+    display: flex;
+    visibility: hidden;
+    transition: visibility 0s 0.5s;
+  }
+
+  .user.active {
+    visibility: visible;
+    transition: visibility 0s 0s;
+  }
+
+  /* Panel Izquierdo (Imagen) - Oculto en móviles pequeños */
+  .menu-graphic-panel {
+    width: 0%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    transition: width 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+    background-color: #0a0a0a;
+  }
+
+  .panel-img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    filter: contrast(110%) brightness(40%) grayscale(100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 20%, rgba(0,0,0,0.8) 100%);
+  }
+
+  .panel-badge {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--dorado-guanerita, #d9c5a0);
+    border: 1px solid rgba(217, 197, 160, 0.3);
+    padding: 6px 12px;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* Panel Derecho (Contenido) */
+  .menu-content-panel {
+    width: 100%;
+    height: 100%;
+    background-color: #141413; /* Un tono un poco más claro que el negro puro */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 120px 40px 40px 40px;
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+
+  .user.active .menu-content-panel {
+    transform: translateX(0);
+  }
+
+  .panel-header-mobile {
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  /* Enlaces con efecto hover sofisticado */
+  .nav-link-premium {
+    font-family: "Playfair Display", serif;
+    font-size: 2.5rem;
+    color: var(--crema-suave, #f5f5f4);
+    position: relative;
+    width: fit-content;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  .nav-link-premium:hover {
+    color: var(--dorado-guanerita, #d9c5a0);
+    transform: translateX(10px);
+  }
+
+  .divider-line {
+    width: 40px;
+    height: 1px;
+    background-color: var(--dorado-guanerita, #d9c5a0);
+    margin: 15px 0;
+    opacity: 0.5;
+  }
+
+  .nav-actions-premium {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cart-icon-premium {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--crema-suave, #f5f5f4);
+  }
+
+  .cart-icon-premium img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .cart-text {
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.9rem;
+  }
+
+  .btn-gold-outline {
+    font-family: "Montserrat", sans-serif;
+    border: 1px solid var(--dorado-guanerita, #d9c5a0);
+    color: var(--dorado-guanerita, #d9c5a0);
+    padding: 12px 24px;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .btn-gold-outline:hover {
+    background-color: var(--dorado-guanerita, #d9c5a0);
+    color: #141413;
+  }
+
+  .panel-footer-premium {
+    display: flex;
+    justify-content: space-between;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.2);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  /* ==========================================================================
+     VISTA DESKTOP ESTÁTICA (Mayor a 768px)
+     ========================================================================== */
+  @media screen and (min-width: 768px) {
+    .menu-trigger {
+      display: none;
     }
 
-    /* Restauramos el flujo horizontal original */
     .user {
       position: static;
       width: auto;
-      max-width: none;
+      height: auto;
+      visibility: visible;
+      display: flex;
+      background-color: transparent;
+    }
+
+    .menu-graphic-panel, .panel-header-mobile, .divider-line, .panel-footer-premium, .cart-text {
+      display: none;
+    }
+
+    .menu-content-panel {
+      position: static;
+      width: auto;
       height: auto;
       background-color: transparent;
-      border-left: none;
-      box-shadow: none;
-      flex-direction: row;
-      gap: 24px;
       padding: 0;
+      transform: none;
       transition: none;
     }
 
-    .user a {
-      font-size: 1.1rem;
-    }
-
-    .nav-actions {
+    .links-container {
       flex-direction: row;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-link-premium {
+      font-size: 1.1rem;
+      font-family: "Montserrat", sans-serif;
+    }
+
+    .nav-link-premium:hover {
+      transform: none;
+    }
+
+    .nav-actions-premium {
+      flex-direction: row;
+      align-items: center;
       gap: 20px;
-      width: auto;
-      margin-top: 0;
     }
 
-    .user .button {
-      padding: 6px 14px;
-      width: auto;
+    .btn-gold-outline {
+      padding: 6px 16px;
+      font-size: 0.8rem;
     }
+  }
 
-    .user .button:hover {
-      box-shadow: 0 0 10px var(--dorado-guanerita);
-      background-color: transparent;
-      color: var(--dorado-guanerita);
+  /* ==========================================================================
+     ACTIVACIÓN DE CO-PANEL EN TABLETS Y MONITORES MEDIANOS (Menú abierto)
+     ========================================================================== */
+  @media screen and (max-width: 767px) and (min-width: 640px) {
+    .user.active .menu-graphic-panel {
+      width: 45%; /* La imagen toma el 45% */
     }
+    .user.active .menu-content-panel {
+      width: 55%; /* El texto toma el 55% para un look asimétrico de revista */
+    }
+  }
+
+  /* En computadoras o pantallas anchas que fuercen el responsive por alguna razón */
+  @media screen and (max-width: 1200px) and (min-width: 768px) {
+    /* Mantiene comportamiento por si alteras el breakpoint principal */
   }
 </style>
