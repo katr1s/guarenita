@@ -17,24 +17,55 @@ import "../../css/Login.css";
       <img src="../lupulo_hoja.png" class="down" />
     </div>
     <div class="content">
-      <form>
         <h2>Destapar Experiencia</h2>
-        <div class="inputs">
-          <label for="">Correo</label>
-          <input type="email" name="" id="" />
-        </div>
-        <div class="inputs">
-          <label for="">Contraseña</label>
-          <input type="password" name="" id="" />
-        </div>
-
-        <button>Entrar a la Comunidad</button>
-        <button class="google">
-            Iniciar sesion con 
-            <img src="../google.svg" alt="Google">
-            
+        <button class="google" id="btn-google">
+          Iniciar sesion con
+          <img src="../google.svg" alt="Google" />
         </button>
-      </form>
+        <button class="google" id="btn-github">
+          Iniciar sesion con GitHub
+        </button>
     </div>
   </div>
+
+  <script>
+    import { authService } from "../../services/authServices";
+
+    // Manejador de Google
+    document
+      .getElementById("btn-google")
+      ?.addEventListener("click", async () => {
+        try {
+          const user = await authService.loginWithGoogle();
+          console.log("¡Logueado con éxito!", user);
+          // Aquí puedes redireccionar al usuario (ej: window.location.href = '/dashboard')
+        } catch (error) {
+          alert("Error al iniciar sesión con Google");
+        }
+      });
+
+    // Manejador de GitHub
+    document
+      .getElementById("btn-github")
+      ?.addEventListener("click", async () => {
+        try {
+          const user = await authService.loginWithGithub();
+          console.log("¡Logueado con GitHub!", user);
+        } catch (error) {
+          alert("Error al iniciar sesión con GitHub");
+        }
+      });
+
+    // Manejador de Apple
+    document
+      .getElementById("btn-apple")
+      ?.addEventListener("click", async () => {
+        try {
+          const user = await authService.loginWithApple();
+          console.log("¡Logueado con Apple!", user);
+        } catch (error) {
+          alert("Error al iniciar sesión con Apple");
+        }
+      });
+  </script>
 </Layout>
