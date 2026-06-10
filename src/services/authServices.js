@@ -1,5 +1,6 @@
-import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider, githubProvider, appleProvider } from "../firebase";
+import { signInWithPopup } from "firebase/auth";
+
 
 export const authService = {
   // Iniciar sesión con Google
