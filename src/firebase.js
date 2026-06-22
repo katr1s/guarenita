@@ -11,9 +11,6 @@ import {
   OAuthProvider 
 } from "firebase/auth";
 
-// Your web app's Firebase configuration
-    console.log("LLAVE CARGADA:", import.meta.env.PUBLIC_FIREBASE_API_KEY);
-
 const firebaseConfig = {
   apiKey: import.meta.env.PUBLIC_FIREBASE_API_KEY,
   authDomain: import.meta.env.PUBLIC_FIREBASE_AUTH_DOMAIN,

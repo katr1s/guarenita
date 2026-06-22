@@ -18,19 +18,17 @@ import "../../css/Login.css";
     </div>
     <div class="content">
       <div class="form">
-<h2>Destapar Experiencia</h2>
-        <button class="google" id="btn-google">
-          Iniciar sesion con
-          <img src="../google.svg" alt="Google" />
-        </button>
-        <button class="google" id="btn-github">
-          Iniciar sesion con GitHub
-        </button>
-        <button class="google" id="btn-apple">
-          Iniciar sesion con APPLE
-        </button>
+        <h2>Destapar Experiencia</h2>
+        <h4>Inicia sesion con</h4>
+        <div class="box_form">
+          <button class="google" id="btn-google">
+            <img src="../google.svg" alt="Google" />
+          </button>
+          <button class="google" id="btn-github">
+            <img src="../github_light.svg" alt="Google" />
+          </button>
+        </div>
       </div>
-        
     </div>
   </div>
 
@@ -44,7 +42,7 @@ import "../../css/Login.css";
         try {
           const user = await authService.loginWithGoogle();
           console.log("¡Logueado con éxito!", user);
-          // Aquí puedes redireccionar al usuario (ej: window.location.href = '/dashboard')
+          window.location.href = '/'
         } catch (error) {
           alert("Error al iniciar sesión con Google");
         }
@@ -57,6 +55,7 @@ import "../../css/Login.css";
         try {
           const user = await authService.loginWithGithub();
           console.log("¡Logueado con GitHub!", user);
+          window.location.href = '/'
         } catch (error) {
           alert("Error al iniciar sesión con GitHub");
         }

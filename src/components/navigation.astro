@@ -32,7 +32,10 @@
             <img src="./shopping.svg" alt="Mis compras" />
             <span class="cart-text">Ver Carrito</span>
           </a>
-          <a href="/Account/Login" class="btn-gold-outline">Iniciar sesión</a>
+          <a href="/Account/Login" class="btn-gold-outline sesion">Iniciar sesión</a>
+          <button class="btn-gold-outline logOut oculto" >Cerrar sesion</button>
+
+          <img class="UserPhoto">
         </div>
       </div>
 
@@ -61,12 +64,38 @@
     // Bloqueo estricto del scroll
     document.body.style.overflow = isActive ? 'hidden' : '';
   });
+
+
+
+  import { auth, onAuthStateChanged, signOut } from "../services/authServices";
+
+  const UserLogin = document.querySelector(".sesion")
+  const UserLogOut =  document.querySelector(".logOut")
+  const UserPhoto = document.querySelector(".UserPhoto")
+
+  onAuthStateChanged(auth, (user) => {
+    if(user){
+      UserLogin?.classList.add("oculto");
+      UserLogOut?.classList.remove("oculto")
+
+      UserPhoto.src = user.photoURL;
+      UserPhoto.alt = user.displayName;
+      UserPhoto.title = user.displayName;
+
+
+    }else{
+      UserLogOut?.classList.add("oculto")
+      UserLogin?.classList.remove("oculto")
+      UserPhoto?.classList.add("oculto")
+    }
+  })
+
+  UserLogOut?.addEventListener("click", ()=> {
+    signOut(auth)
+  })
 </script>
 
 <style>
-  /* ==========================================================================
-     BASE Y NAV MINIMALISTA
-     ========================================================================== */
   a {
     text-decoration: none;
   }
@@ -213,6 +242,8 @@
   .links-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 25px;
   }
 
@@ -240,8 +271,11 @@
   }
 
   .nav-actions-premium {
+    width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 20px;
   }
 
@@ -266,6 +300,7 @@
     font-family: "Montserrat", sans-serif;
     border: 1px solid var(--dorado-guanerita, #d9c5a0);
     color: var(--dorado-guanerita, #d9c5a0);
+    background-color: transparent;
     padding: 12px 24px;
     text-align: center;
     font-size: 0.85rem;
@@ -273,6 +308,7 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
   }
 
   .btn-gold-outline:hover {
@@ -288,6 +324,15 @@
     color: rgba(255,255,255,0.2);
     text-transform: uppercase;
     letter-spacing: 1.5px;
+  }
+
+ 
+
+  .UserPhoto{
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    border: 1px solid var(--dorado-guanerita);
   }
 
   /* ==========================================================================
@@ -348,6 +393,9 @@
     }
   }
 
+  .oculto{
+    display: none;
+  }
   /* ==========================================================================
      ACTIVACIÓN DE CO-PANEL EN TABLETS Y MONITORES MEDIANOS (Menú abierto)
      ========================================================================== */
@@ -363,5 +411,9 @@
   /* En computadoras o pantallas anchas que fuercen el responsive por alguna razón */
   @media screen and (max-width: 1200px) and (min-width: 768px) {
     /* Mantiene comportamiento por si alteras el breakpoint principal */
+    .nav-actions-premium{
+      justify-content: center;
+      align-items: center;
+    }
   }
 </style>

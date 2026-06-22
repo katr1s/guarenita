@@ -1,5 +1,5 @@
 import { auth, googleProvider, githubProvider, appleProvider } from "../firebase";
-import { signInWithPopup } from "firebase/auth";
+import { signInWithPopup, onAuthStateChanged, signOut} from "firebase/auth";
 
 
 export const authService = {
@@ -37,3 +37,6 @@ export const authService = {
     }
   }
 };
+
+
+export { auth, onAuthStateChanged, signOut };

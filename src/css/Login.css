@@ -107,6 +107,16 @@ h1{
     margin: 0;
 }
 
+.content h4{
+    color: var(--White);
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin: 0;
+    opacity: 0.7;
+}
+
 .background p{
     color: #1a1a1a;
     font-size: 1.3rem;
@@ -136,43 +146,6 @@ h1{
   box-sizing: border-box;
 }
 
-/* Contenedor de cada grupo de input */
-.inputs {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1.5rem;
-  text-align: left;
-  margin-top: 1.5rem;
-}
-
-/* Etiquetas (Labels) */
-.inputs label {
-  color: var(--dorado-guanerita);
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-/* Campos de texto (Inputs) */
-.inputs input {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 6px;
-  padding: 0.8rem 1rem;
-  color: var(--blanco);
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  outline: none;
-}
-
-/* Efecto al hacer clic en el input */
-.inputs input:focus {
-  border-color: var(--dorado-guanerita);
-  background-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 8px rgba(196, 155, 85, 0.4);
-}
-
 /* Botón de Iniciar Sesión */
 .content .form button {
   background-color: var(--dorado-guanerita);
@@ -190,13 +163,6 @@ h1{
   letter-spacing: 1px;
 }
 
-/* Efecto Hover del botón */
-.content .form button:hover {
-  background-color: var(--dorado-oscuro);
-  box-shadow: 0 4px 15px rgba(196, 155, 85, 0.4);
-  transform: translateY(-1px);
-  color: var(--blanco);
-}
 
 .content .form button:active {
   transform: translateY(1px);
@@ -207,7 +173,7 @@ h1{
   justify-content: center;
   align-items: center;
   background-color: var(--White);
-  background: white;
+  background: var(--crema-suave);
   gap: 20px;
 
 
@@ -224,4 +190,27 @@ h1{
   color: var(--negro-quemado);
   font-size: 2.5rem;
   padding: 10px 20px;
+}
+
+.box_form{
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+@media screen and (max-width: 1200px) {
+  .login .background {
+    display: none;
+  }
+
+  .login .content{
+    width: 100%;
+  }
+
+  .login a{
+    color: var(--dorado-guanerita);
+  }
 }
