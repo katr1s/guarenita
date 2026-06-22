@@ -14,77 +14,14 @@ import "../css/products.css";
   </div>
 
   <div class="box">
-    <article class="product">
-      <img src="./bottle.png" alt="" />
-      <h2>Cerveza Negra</h2>
-      <div class="buttons">
-        <h6>$15000</h6>
-        <button>Añadir</button>
-      </div>
-    </article>
-    <article class="product">
-      <img src="./bottle.png" alt="" />
-      <h2>Cerveza Negra</h2>
-      <div class="buttons">
-        <h6>$15000</h6>
-        <button>Añadir</button>
-      </div>
-    </article>
-    <article class="product">
-      <img src="./bottle.png" alt="" />
-      <h2>Cerveza Negra</h2>
-      <div class="buttons">
-        <h6>$15000</h6>
-        <button>Añadir</button>
-      </div>
-    </article>
-    <article class="product">
-      <img src="./bottle.png" alt="" />
-      <h2>Cerveza Negra</h2>
-      <div class="buttons">
-        <h6>$15000</h6>
-        <button>Añadir</button>
-      </div>
-    </article>
-    <article class="product">
-      <img src="./bottle.png" alt="" />
-      <h2>Cerveza Negra</h2>
-      <div class="buttons">
-        <h6>$15000</h6>
-        <button>Añadir</button>
-      </div>
-    </article>
-    <article class="product">
-      <img src="./bottle.png" alt="" />
-      <h2>Cerveza Negra</h2>
-      <div class="buttons">
-        <h6>$15000</h6>
-        <button>Añadir</button>
-      </div>
-    </article>
-    <article class="product">
-      <img src="./bottle.png" alt="" />
-      <h2>Cerveza Negra</h2>
-      <div class="buttons">
-        <h6>$15000</h6>
-        <button>Añadir</button>
-      </div>
-    </article>
-    <article class="product">
-      <img src="./bottle.png" alt="" />
-      <h2>Cerveza Negra</h2>
-      <div class="buttons">
-        <h6>$15000</h6>
-        <button>Añadir</button>
-      </div>
-    </article>
-    <article class="product">
-      <img src="./bottle.png" alt="" />
-      <h2>Cerveza Negra</h2>
-      <div class="buttons">
-        <h6>$15000</h6>
-        <button>Añadir</button>
-      </div>
-    </article>
+    
   </div>
+
+  <script>
+    import { getProducts } from "../services/productServices";
+
+    const BoxProduct = document.querySelector(".box");
+
+    getProducts(BoxProduct);
+  </script>
 </Layout>

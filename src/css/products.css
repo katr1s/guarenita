@@ -8,6 +8,11 @@
   --dorado-guanerita-rgb: 196, 155, 85;
 }
 
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--dorado-guanerita) transparent; 
+}
+
 body {
   max-width: 1920px;
   width: 100vw;
@@ -74,101 +79,108 @@ p{
     drop-shadow(0 0 15px rgba(0, 0, 0, 0.6));
 }
 
+/* Contenedor principal de tus productos */
 .box {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 24px;
-  width: 90%;
-  max-width: 1400px; 
-  justify-content: center;
-  margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
 }
 
-.product {
-  background: var(--negro-quemado);
-  border: var(--borde-pergamino);
-  border-radius: 16px; 
-  overflow: hidden;
-  text-align: center;
-  padding: 24px 20px; 
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px; /* Automatiza la separación de los elementos internos */
-  max-width: 150px;
-  margin: auto;
+/* Estilo de la Card */
+.product-card {
+    background: var(--negro-quemado);
+    border: var(--fondo-gris) 1px solid ;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
-.product img {
-  width: 100%;
-  height: 180px; /* Un poco más alta para que luzca la botella */
-  object-fit: contain;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5)); /* Sombra suave a la botella */
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
-.product h2 {
-  color: var(--dorado-guanerita);
-  font-size: 22px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  margin: 0;
-  line-height: 1.3;
+/* Media (Imagen) */
+.product-media img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    display: block;
 }
 
-/* Contenedor de precio y botón optimizado */
-.buttons {
-  display: flex;
-  width: 100%;
-  justify-content: space-between; /* Separa el precio a la izquierda y el botón a la derecha */
-  align-items: center;
-  margin-top: 8px;
-  padding: 0 4px;
+/* Contenido de la Card */
+.product-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
-.buttons h6 {
-  color: var(--crema-suave);
-  font-size: 18px;
-  font-weight: 700;
-  margin: 0;
-  text-align: left;
-  /* Eliminamos el width fijo para evitar bugs visuales */
+.product-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    
 }
 
-.buttons button {
-  background: var(--dorado-guanerita);
-  color: #0d0d0d; /* Un negro un poco más suave que el puro */
-  border: none;
-  border-radius: 8px; /* Combina con las esquinas de la card */
-  padding: 8px 16px;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.product-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--dorado-guanerita);
+    font-family: "Playfair Display", serif;
+  letter-spacing: 3px;
 }
 
-/* Efectos de Interacción (Hover) */
-.buttons button:hover {
-  background: var(--crema-suave);
-  transform: scale(1.05);
+.product-price {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #27ae60; 
+    font-family: "Montserrat", sans-serif;
 }
 
-.product:hover {
-  transform: translateY(-8px);
-  /* Sombra medieval combinada con un levísimo resplandor dorado */
-  box-shadow: var(--sombra-medieval), 0 10px 30px rgba(197, 160, 89, 0.08); 
+.product-description {
+    font-size: 0.95rem;
+    color: var(--crema-suave);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    flex-grow: 1;
+    font-family: "Montserrat", sans-serif;
 }
 
-.product:hover img {
-  transform: scale(1.06) rotate(2deg); /* Un levísimo giro le da un toque premium y dinámico */
+/* Footer y Botón */
+.product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--dorado-guanerita);
+    padding-top: 1rem;
 }
 
-/* --- Media Queries (Se mantienen igual para tu grid) --- */
-@media (max-width: 1400px) { .box { grid-template-columns: repeat(4, 1fr); } }
-@media (max-width: 1100px) { .box { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 768px) {  .box { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 480px) {  .box { grid-template-columns: 1fr; } }
+.product-meta {
+    font-size: 0.75rem;
+    color: var(--crema-suave);
+}
+
+.btn-add {
+    background-color: var(--dorado-guanerita);
+    color: var(--negro-quemado);
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+    font-family: "Montserrat", sans-serif;
+}
+
+.btn-add:hover {
+    background-color: transparent;
+    border: 1px solid var(--dorado-guanerita);
+    color: var(--crema-suave);
+}
