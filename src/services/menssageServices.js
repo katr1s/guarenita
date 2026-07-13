@@ -1,7 +1,7 @@
 import { db } from "../firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
-const messagesRef = collection(db, "messages");
+const messagesRef = collection(db, "mensajes");
 
 export const sendMessage = async ({ name, email, message }) => {
   if (!name || !email || !message) {

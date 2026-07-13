@@ -1,9 +1,10 @@
 import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
+import { agregarAlCarrito } from "./addCarServices";
 
 const productsRef = collection(db, "Productos");
 
-export const getProducts = async (BoxProducts) => {
+export const getProductos = async (BoxProducts) => {
   if (!BoxProducts) {
     console.error("El contenedor BoxProducts no existe en el DOM.");
     return;
@@ -21,6 +22,7 @@ export const getProducts = async (BoxProducts) => {
 
     snapshot.forEach((doc) => {
       const data = doc.data();
+      const ID = doc.id
       
       const card = document.createElement("article");
       card.classList.add("product-card");
@@ -36,12 +38,25 @@ export const getProducts = async (BoxProducts) => {
           <p class="product-description">${data.descripcion ?? ""}</p>
           <div class="product-footer">
             <span class="product-price">$${data.precio || '0.00'}</span>
-            <button class="btn-add">Añadir al carrito</button>
+            <button class="btn-add ${ID}">Añadir al carrito</button>
           </div>
         </div>
       `;
-
       BoxProducts.appendChild(card);
+
+      const addCar = document.querySelector(`.${ID}`)
+
+      const Producto = {
+        "Nombre": `${data.nombre}`,
+        "Imagen": `${data.image}`,
+        "Cantidad": 1,
+        "Precio": `${data.precio}`,
+      }
+      
+      addCar.addEventListener("click", () => {
+        agregarAlCarrito(Producto)
+      })
+
     });
   } catch (error) {
     console.error("Error al cargar productos desde Firestore:", error);
