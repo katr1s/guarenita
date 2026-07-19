@@ -1,11 +1,41 @@
-<div class="cart"></div>
+<div class="cart">
+  <div class="product">
+
+  </div>
+  <div class="addres">
+    <form>
+      <h2>Informacion de envio</h2>
+      <p>Al confirmar tu pedido, nuestro gremio se comunicará contigo para calcular los costos de la travesía y acordar el pago</p>
+      <p></p>
+      <label for="addres">Direccion</label>
+      <input type="text" id="addres" placeholder="e.j: Manzana J, Casa 10">
+      <div class="city">
+        <div class="box">
+          <label for="municipality">Municipio</label>
+          <input type="text" id="municipality" placeholder="e.j: Santander">
+          <label for="city">Ciudad</label>
+          <input type="text" id="city" placeholder="e.j: Bucaramanga">
+        </div>
+        <div class="box">
+          <label for="type">Tipo</label>
+          <input type="text" id="type" placeholder="e.j: Casa">
+          <label for="inf">Informacion adicional</label>
+          <textarea id="inf" placeholder="ej: dejar en portería, casa con reja negra" />
+        </div>
+      </div>
+      </div>
+      
+      <button class="btn-submit">Hacer pedido</button>
+    </form>
+  </div>
+</div>
 
 <script>
     import { getProductosCarrito } from "../services/cartServices";
     import { onAuthStateChanged } from "firebase/auth";
     import { auth } from "../firebase";
 
-    const cart = document.querySelector(".cart")
+    const cart = document.querySelector(".product")
 
 
     onAuthStateChanged(auth, (user) => {

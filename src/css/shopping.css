@@ -35,6 +35,7 @@ body {
   color: var(--crema-suave);
   overflow-x: hidden;
   flex-direction: column;
+  padding-bottom: 50px;
 
   background:
     radial-gradient(
@@ -102,9 +103,21 @@ p {
 }
 
 .cart{
-    width: min(1200px, 95%);
-    margin: 4rem auto;
-    display: grid;
+    width: 95%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 50px;
+}
+
+.cart .product{
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 2rem;
 }
 
@@ -121,6 +134,7 @@ p {
     border-radius: 18px;
 
     transition: .25s ease;
+    width: 80%;
 }
 
 .product-card:hover{
@@ -197,4 +211,112 @@ p {
     font-size: 1.3rem;
     font-weight: bold;
     letter-spacing: 1px;
+}
+
+.cart form{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.cart form h2{
+  width: 100%;
+  font-size: 2rem;
+  text-align: center;
+  margin: 0;
+}
+
+.cart form p{
+  width: 80%;
+  font-size: 1rem;
+  text-align: center;
+  margin: 15px auto;
+  opacity: 0.8;
+}
+
+.cart label{
+  color: var(--dorado-guanerita);
+  font-size: 1.2rem;
+  font-family: "Playfair Display", serif;
+  letter-spacing: 3px;
+  margin: 0;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 5px var(--negro-quemado))
+    drop-shadow(0 0 15px rgba(0, 0, 0, 0.6));
+}
+
+.cart .addres{
+    width: 48%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.5rem 0;
+
+
+    background: rgba(22,22,22,.9);
+    border: 1px solid rgba(212,175,55,.15);
+    border-radius: 18px;
+
+    transition: .25s ease;
+}
+
+.cart .addres:hover{
+    border-color: #D4AF37;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(212,175,55,.08);
+}
+
+.cart .city{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.cart .box{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.cart form input, 
+.cart form textarea {
+  width: 90%;
+  height: 35px;
+  background-color: rgba(0, 0, 0, 0.2); /* Fondo oscuro sutil */
+  border: 1px solid #cda434; /* Borde dorado */
+  color: #ffffff; /* Texto blanco al escribir */
+  padding: 10px;
+  border-radius: 4px; /* O quítalo (0px) para un estilo más rústico */
+  outline: none;
+  resize: none;
+}
+
+.cart #addres{
+  width: 95%;
+}
+
+.cart .btn-submit {
+  background-color: #cda434;
+  color: #111;
+  border: none;
+  padding: 12px 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 40%;
+  margin-top: 10px;
+  border-radius: 9px;
+  transition: background-color 0.3s ease;
+}
+
+.cart .btn-submit:hover {
+  background-color: #e8bd4b; /* Un dorado más claro al pasar el mouse */
 }
