@@ -299,7 +299,7 @@ p {
   resize: none;
 }
 
-.cart #addres{
+.cart #addres, .cart #phone{
   width: 95%;
 }
 

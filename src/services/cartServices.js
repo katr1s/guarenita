@@ -37,9 +37,7 @@ export const getProductosCarrito = async (BoxProducts, userId) => {
     Object.keys(items).forEach((idProducto, indice) => {
       const data = items[idProducto];
       const dataId = indice;
-      console.log(dataId);
       var totalProducto = Number(data.Precio) * data.Cantidad;
-      let Cantidad = data.Cantidad;
 
       const card = document.createElement("article");
       card.classList.add("product-card");
@@ -125,7 +123,9 @@ export const actualizarCantidadCarrito = async (
     const items = cartData.items || {};
 
     if (items[idProducto]) {
+      const NewPrice = nuevaCantidad * items[idProducto].Precio;
       items[idProducto].Cantidad = Number(nuevaCantidad);
+      items[idProducto].Precio = Number(NewPrice);
 
       await updateDoc(cartDocRef, {
         items: items,
