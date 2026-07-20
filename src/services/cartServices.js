@@ -54,7 +54,10 @@ export const getProductosCarrito = async (BoxProducts, userId) => {
           </div>
           
           <div class="product-footer">
-            <input type="number" name="" id="${indice}" value="${data.Cantidad}">
+            <div class="buttonDelete">
+              <input type="number" name="" id="${indice}" value="${data.Cantidad}">
+              <button class="btn-delete-${indice}">Eliminar</button>
+            </div>
             <span class="product-price${indice}">$${totalProducto.toLocaleString("es-CO")}</span>
           </div>
         </div>
@@ -90,6 +93,14 @@ export const getProductosCarrito = async (BoxProducts, userId) => {
           infPrecioProducto.innerHTML= `$${totalProducto.toLocaleString("es-CO")}`
         }
       });
+
+
+      const EliminarProducto= document.querySelector(`.btn-delete-${indice}`)
+      EliminarProducto.addEventListener("click", async () => {
+        await DeleteProductCart(userId, idProducto);
+        // Volvemos a renderizar el carrito para refrescar la interfaz y los índices
+        getProductosCarrito(BoxProducts, userId);
+      })
     });
   } catch (error) {
     console.error("Error exacto en Firestore:", error);
@@ -123,5 +134,28 @@ export const actualizarCantidadCarrito = async (
     }
   } catch (error) {
     console.error("Error al actualizar la cantidad en Firestore:", error);
+  }
+};
+
+export const DeleteProductCart = async (userId, idProducto) => {
+  try {
+    const cartDocRef = doc(db, "CartUsers", userId);
+    const cartSnapshot = await getDoc(cartDocRef);
+    
+    if (!cartSnapshot.exists()) return;
+
+    const cartData = cartSnapshot.data();
+    let items = cartData.items || {};
+
+    if (Array.isArray(items)) {
+      items = items.filter((_, index) => index !== Number(idProducto));
+    } else {
+      delete items[idProducto];
+    }
+
+    await updateDoc(cartDocRef, { items });
+    console.log(`Producto ${idProducto} eliminado del carrito.`);
+  } catch (error) {
+    console.error("Error al eliminar el producto en Firestore:", error);
   }
 };

@@ -30,6 +30,8 @@
   </div>
 </div>
 
+
+
 <script>
     import { getProductosCarrito } from "../services/cartServices";
     import { onAuthStateChanged } from "firebase/auth";
@@ -42,10 +44,8 @@
   if (user) {
     console.log(user.uid)
     const userID = user.uid
-    // ¡El usuario ya está validado y activo! Cargamos sus productos
     getProductosCarrito(cart, userID);
   } else {
-    // Si no hay usuario, mostramos de forma segura el mensaje en el DOM
     if (cart) {
       cart.innerHTML = `
         <div class="text-center py-12">
