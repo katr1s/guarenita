@@ -1,0 +1,94 @@
+<div class="check " id="modalCheck">
+  <div class="check-content ">
+    <img src="/check_circle.svg" alt="Éxito" />
+    <h3>Pedido Confirmado</h3>
+    <button class="closeCheck">Cerrar</button>
+  </div>
+</div>
+
+<style>
+  /* Contenedor principal del modal/check oculto por defecto */
+  .check {
+    display: none; /* Se activa dinámicamente con JS */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+    font-family: inherit;
+  }
+
+  /* Tarjeta interna */
+  .check.active {
+    display: flex;
+  }
+
+  .check-content {
+    background-color: #121212;
+    border: 1px solid #333;
+    padding: 2.5rem;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  }
+
+  .check img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1.5rem;
+    object-fit: contain;
+    background-color: var(--green);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+  }
+
+  .check h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #f3f4f6;
+  }
+
+  /* Botón de cierre */
+  .closeCheck {
+    background-color: #c49b55; 
+    color: #fff;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+</style>
+
+<script>
+  export const modalCheck = document.getElementById("modalCheck");
+  const btnCloseCheck = document.querySelector(".closeCheck");
+
+  // Función para mostrar el modal de confirmación
+  const mostrarConfirmacion = () => {
+    modalCheck.classList.add("active");
+  };
+
+  // Evento para cerrar al presionar el botón
+  btnCloseCheck?.addEventListener("click", () => {
+    modalCheck.classList.remove("active");
+
+    // Opcional: Redirigir al inicio o limpiar la vista del carrito
+    window.location.href = "/Productos";
+  });
+</script>

@@ -27,14 +27,13 @@
             id="inf"
             placeholder="ej: dejar en portería, casa con reja negra"></textarea>
         </div>
-
       </div>
-      
     </form>
 
     <button class="btn-submit">Hacer pedido</button>
   </div>
 </div>
+
 
 <script>
   import { getProductosCarrito } from "../services/cartServices";
@@ -54,18 +53,21 @@
         e.preventDefault();
         try {
           const addres = document.getElementById("addres").value.trim();
-          const municipality = document.getElementById("municipality").value.trim();
+          const municipality = document
+            .getElementById("municipality")
+            .value.trim();
           const city = document.getElementById("city").value.trim();
           const type = document.getElementById("type").value.trim();
           const inf = document.getElementById("inf").value.trim();
           const phone = document.getElementById("phone").value.trim();
 
-          if (!addres || !municipality || !city) {
+          if (!addres || !municipality || !city || !phone) {
             alert(
-              "Por favor completa al menos la dirección, el municipio y la ciudad.",
+              "Por favor completa al menos la dirección, telefono, el municipio y la ciudad.",
             );
             return;
           }
+
 
           const OrderData = {
             Direccion: addres,
@@ -76,18 +78,17 @@
             Celular: phone,
           };
 
-          const result = await crearPedido(userID, OrderData)
+          const result = await crearPedido(userID, OrderData);
 
-          document.querySelector("form").reset()
+          document.querySelector("form").reset();
 
-          deleteProduct(userID)
+          deleteProduct(userID);
           getProductosCarrito(cart, userID);
+          modalCheck.classList.add("active");
         } catch {
           console.log("No se puede crear el pedido");
         }
       });
-
-
     } else {
       if (cart) {
         cart.innerHTML = `
